@@ -1,16 +1,18 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
-    background-image: url('img/fondo.jpg'); 
-    background-size: cover; 
-    background-position: center center; 
-    background-repeat: no-repeat; 
+    background-image: url('img/fondo.jpg'); /* Fondo de la página */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
+/* Estilo del encabezado */
 header {
-    background: #333;
+    background: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 15px;
 }
@@ -30,14 +32,45 @@ nav ul li a {
     text-decoration: none;
 }
 
+/* Secciones */
 section {
     padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 8px;
 }
 
+/* Estilos de la galería */
 .gallery-container img {
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
     margin: 10px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Formulario de contacto */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form input, form textarea, form button {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background: #333;
+    color: white;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #555;
 }
