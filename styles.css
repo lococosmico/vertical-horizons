@@ -7,7 +7,6 @@ body {
     background-size: cover; 
     background-position: center center; 
     background-repeat: no-repeat; 
-    
 }
 
 header {
@@ -41,6 +40,4 @@ section {
     margin: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 }
