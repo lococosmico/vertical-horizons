@@ -4,71 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vertical Horizons</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Estilos críticos */
-        body {
+        /* Preloader y estilos críticos */
+        body.preload {
+            opacity: 0;
+            visibility: hidden;
+            height: 100vh;
+            overflow: hidden;
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/fondo.jpg') center/cover fixed;
-            color: white;
-            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
         }
-        .content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .language-switcher {
+        #preloader {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #2c3e50;
             display: flex;
-            gap: 10px;
-        }
-        .language-switcher button {
-            background: rgba(255,255,255,0.2);
-            border: 1px solid white;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
             color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
         }
-        .formation-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            background: rgba(0,0,0,0.5);
-            padding: 30px;
-            border-radius: 10px;
-            margin: 40px 0;
+        body.loaded #preloader {
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
         }
     </style>
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- Carga CSS optimizada -->
+    <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
 </head>
-<body>
-    <div class="content">
-        <div class="language-switcher">
-            <button id="btn-fr">FR</button>
-            <button id="btn-en">EN</button>
-        </div>
-        
-        <!-- Añade aquí todas tus secciones -->
-        <section id="formation">
-            <div class="formation-container">
-                <div class="formation-text">
-                    <h2 data-i18n="formation_title">Formation Escalade Falaise</h2>
-                    <p data-i18n="formation_text">Apprenez les techniques avancées...</p>
-                </div>
-                <div class="formation-image">
-                    <img src="img/photo2.jpg" alt="Formation" data-i18n-alt="formation_alt">
-                </div>
-            </div>
-        </section>
+<body class="preload">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner">Chargement...</div>
     </div>
 
-    <script src="js/script.js"></script>
+    <!-- Contenido principal -->
+    <div class="content">
+        <!-- [Tus secciones aquí] -->
+    </div>
+
+    <!-- Carga de scripts optimizada -->
+    <script>
+        // Función para cargar scripts sin bloquear
+        function loadScript(src, callback) {
+            const script = document.createElement('script');
+            script.src = src;
+            script.onload = callback;
+            document.body.appendChild(script);
+        }
+
+        // Mostrar página cuando todo esté listo
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+            setTimeout(function() {
+                document.getElementById('preloader').style.display = 'none';
+                document.body.classList.remove('preload');
+            }, 500);
+            
+            // Cargar script principal
+            loadScript('js/script.js', function() {
+                console.log('Script cargado correctamente');
+            });
+        });
+    </script>
 </body>
 </html>

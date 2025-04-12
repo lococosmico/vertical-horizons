@@ -1,51 +1,60 @@
-// Configuración inicial
-document.addEventListener('DOMContentLoaded', () => {
-    initLanguage();
-    document.body.classList.add('loaded');
-});
-
-// Traducciones
+// Sistema de traducciones
 const translations = {
     fr: {
-        title: "Vertical Horizons",
-        formation_text: "Apprenez les techniques...",
-        formation_alt: "Formation en falaise"
-        // ... todas las claves FR
+        // ... tus traducciones al francés
     },
     en: {
-        title: "Vertical Horizons",
-        formation_text: "Learn advanced techniques...",
-        formation_alt: "Rock climbing training"
-        // ... todas las claves EN
+        // ... tus traducciones al inglés
     }
 };
 
-// Función principal
+// Función robusta para cambio de idioma
 function changeLanguage(lang) {
-    document.documentElement.lang = lang;
-    
-    // Actualizar textos
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        el.textContent = translations[lang]?.[key] || '';
-    });
-    
-    // Actualizar imágenes
-    document.querySelectorAll('[data-i18n-alt]').forEach(img => {
-        const key = img.getAttribute('data-i18n-alt');
-        img.alt = translations[lang]?.[key] || '';
-    });
-    
-    localStorage.setItem('siteLang', lang);
+    try {
+        // 1. Actualizar atributo HTML
+        document.documentElement.lang = lang;
+        
+        // 2. Actualizar textos
+        const textElements = document.querySelectorAll('[data-i18n]');
+        textElements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
+        });
+        
+        // 3. Actualizar placeholders e imágenes
+        const updateAttributes = (selector, attr) => {
+            document.querySelectorAll(selector).forEach(el => {
+                const key = el.getAttribute(selector);
+                if (translations[lang] && translations[lang][key]) {
+                    el[attr] = translations[lang][key];
+                }
+            });
+        };
+        updateAttributes('[data-i18n-placeholder]', 'placeholder');
+        updateAttributes('[data-i18n-alt]', 'alt');
+        
+        // 4. Guardar preferencia
+        localStorage.setItem('siteLang', lang);
+        
+    } catch (error) {
+        console.error('Error en changeLanguage:', error);
+    }
 }
 
-// Inicialización
-function initLanguage() {
-    const savedLang = localStorage.getItem('siteLang') || 
-                     (navigator.language.startsWith('fr') ? 'fr' : 'en');
+// Inicialización segura
+document.addEventListener('DOMContentLoaded', () => {
+    // Configurar botones
+    const setupButton = (id, lang) => {
+        const btn = document.getElementById(id);
+        if (btn) btn.addEventListener('click', () => changeLanguage(lang));
+    };
+    setupButton('btn-fr', 'fr');
+    setupButton('btn-en', 'en');
+    
+    // Cargar idioma
+    const defaultLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
+    const savedLang = localStorage.getItem('siteLang') || defaultLang;
     changeLanguage(savedLang);
-
-    // Eventos de botones
-    document.getElementById('btn-fr').addEventListener('click', () => changeLanguage('fr'));
-    document.getElementById('btn-en').addEventListener('click', () => changeLanguage('en'));
-}
+}); 
