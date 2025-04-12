@@ -1,72 +1,51 @@
-<script>
-    // Esperar a que el DOM esté completamente cargado
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log("DOM completamente cargado - Inicializando idioma");
-        
-        // Definir traducciones
-        const translations = {
-            fr: {
-                about: "À propos",
-                gallery: "Galerie",
-                contact: "Contact",
-                about_title: "À propos",
-                about_text: "Bienvenue chez Vertical Horizons, votre école d'escalade en Suisse...",
-                // ... (todas tus traducciones al francés)
-            },
-            en: {
-                about: "About",
-                gallery: "Gallery",
-                contact: "Contact",
-                about_title: "About Us",
-                about_text: "Welcome to Vertical Horizons, your climbing school in Switzerland...",
-                // ... (todas tus traducciones al inglés)
-            }
-        };
-
-        // Función para cambiar idioma (ahora está en el scope correcto)
-        window.changeLanguage = function(lang) {
-            console.log("Cambiando idioma a:", lang);
-            
-            try {
-                // 1. Actualizar atributo lang
-                document.documentElement.lang = lang;
-                
-                // 2. Actualizar textos
-                document.querySelectorAll('[data-i18n]').forEach(el => {
-                    const key = el.getAttribute('data-i18n');
-                    if (translations[lang]?.[key]) {
-                        el.textContent = translations[lang][key];
-                    }
-                });
-                
-                // 3. Actualizar placeholders
-                document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-                    const key = el.getAttribute('data-i18n-placeholder');
-                    if (translations[lang]?.[key]) {
-                        el.placeholder = translations[lang][key];
-                    }
-                });
-                
-                // Guardar preferencia
-                localStorage.setItem('preferredLang', lang);
-                
-            } catch (error) {
-                console.error("Error al cambiar idioma:", error);
-            }
-        };
-
-        // Asignar eventos a los botones correctamente
-        document.querySelectorAll('.language-switcher button').forEach(btn => {
-            btn.addEventListener('click', function() {
-                changeLanguage(this.textContent.trim().toLowerCase());
-            });
-        });
-
-        // Inicializar con idioma guardado o detectado
-        const  preferredLang = localStorage.getItem('preferredLang') || 
-        (navigator.language.startsWith('fr') ? 'fr' : 'en');
-changeLanguage(preferredLang);
+// Configuración inicial
+document.addEventListener('DOMContentLoaded', () => {
+    initLanguage();
+    document.body.classList.add('loaded');
 });
-</script>
-// Al final del eventListener DOMContentLoaded:
-document.body.classList.add('ready');
+
+// Traducciones
+const translations = {
+    fr: {
+        title: "Vertical Horizons",
+        formation_text: "Apprenez les techniques...",
+        formation_alt: "Formation en falaise"
+        // ... todas las claves FR
+    },
+    en: {
+        title: "Vertical Horizons",
+        formation_text: "Learn advanced techniques...",
+        formation_alt: "Rock climbing training"
+        // ... todas las claves EN
+    }
+};
+
+// Función principal
+function changeLanguage(lang) {
+    document.documentElement.lang = lang;
+    
+    // Actualizar textos
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = translations[lang]?.[key] || '';
+    });
+    
+    // Actualizar imágenes
+    document.querySelectorAll('[data-i18n-alt]').forEach(img => {
+        const key = img.getAttribute('data-i18n-alt');
+        img.alt = translations[lang]?.[key] || '';
+    });
+    
+    localStorage.setItem('siteLang', lang);
+}
+
+// Inicialización
+function initLanguage() {
+    const savedLang = localStorage.getItem('siteLang') || 
+                     (navigator.language.startsWith('fr') ? 'fr' : 'en');
+    changeLanguage(savedLang);
+
+    // Eventos de botones
+    document.getElementById('btn-fr').addEventListener('click', () => changeLanguage('fr'));
+    document.getElementById('btn-en').addEventListener('click', () => changeLanguage('en'));
+}
