@@ -4,6 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vertical Horizons - École d'Escalade</title>
+    
+    <!-- CSS primero para evitar FOUC -->
+    <style>
+        /* Preloader invisible pero interactivo */
+        body.preload {
+            visibility: hidden;
+            opacity: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        body.loaded {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.4s ease-out;
+        }
+        
+        /* Selector de idioma */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 8px;
+        }
+        .language-switcher button {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid white;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+    </style>
+    
+    <!-- CSS principal con preload -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+</head>
+
+<body class="preload">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Horizons - École d'Escalade</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Prevenir FOUC (Flash of Unstyled Content) */
@@ -132,3 +181,44 @@
     </script>
 </body>
 </html>
+<script>
+    // Mini loader para CSS
+    function loadCSS(url) {
+        return new Promise(resolve => {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = url;
+            link.onload = resolve;
+            document.head.appendChild(link);
+        });
+    }
+
+    // Esperar a que todo esté listo
+    Promise.all([
+        loadCSS('styles.css'),
+        new Promise(resolve => window.addEventListener('DOMContentLoaded', resolve))
+    ]).then(() => {
+        document.body.classList.replace('preload', 'loaded');
+        
+        // Tu código de traducciones aquí
+        const translations = {
+            fr: { /* ... tus traducciones al francés ... */ },
+            en: { /* ... tus traducciones al inglés ... */ }
+        };
+
+        function changeLanguage(lang) {
+            // ... tu implementación actual ...
+        }
+
+        // Inicialización
+        const savedLang = localStorage.getItem('preferredLang') || 
+                         (navigator.language.startsWith('en') ? 'en' : 'fr');
+        changeLanguage(savedLang);
+    }).catch(error => {
+        console.error('Error durante la carga:', error);
+        document.body.classList.replace('preload', 'loaded');
+    });
+    </script>
+</body>
+</html>
+
