@@ -4,16 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vertical Horizons</title>
+    <!-- Estilos críticos INLINE -->
     <style>
-        /* Preloader y estilos críticos */
-        body.preload {
-            opacity: 0;
-            visibility: hidden;
-            height: 100vh;
-            overflow: hidden;
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-        }
+        /* PRELOADER */
         #preloader {
             position: fixed;
             top: 0;
@@ -26,51 +19,80 @@
             align-items: center;
             z-index: 9999;
             color: white;
+            font-family: Arial, sans-serif;
         }
-        body.loaded #preloader {
+        
+        /* FONDO Y ESTRUCTURA BASE */
+        body {
+            margin: 0;
             opacity: 0;
-            transition: opacity 0.5s;
-            pointer-events: none;
+            visibility: hidden;
+            transition: opacity 0.5s ease;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        body.loaded {
+            opacity: 1;
+            visibility: visible;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/fondo.jpg') center/cover fixed;
+            min-height: 100vh;
+            color: white;
+        }
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
     </style>
-    <!-- Carga CSS optimizada -->
-    <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+    <!-- CSS principal (optimizado) -->
+    <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
 </head>
-<body class="preload">
-    <!-- Preloader -->
+<body>
+    <!-- Preloader visible -->
     <div id="preloader">
-        <div class="spinner">Chargement...</div>
+        <div class="spinner">Chargement en cours...</div>
     </div>
 
     <!-- Contenido principal -->
     <div class="content">
+        <!-- Botones de idioma -->
+        <div class="language-switcher">
+            <button id="btn-fr">FR</button>
+            <button id="btn-en">EN</button>
+        </div>
+        
         <!-- [Tus secciones aquí] -->
+        <section id="formation">
+            <div class="formation-container">
+                <img src="img/photo2.jpg" alt="Formation escalade">
+            </div>
+        </section>
     </div>
 
-    <!-- Carga de scripts optimizada -->
+    <!-- Script optimizado -->
     <script>
-        // Función para cargar scripts sin bloquear
-        function loadScript(src, callback) {
-            const script = document.createElement('script');
-            script.src = src;
-            script.onload = callback;
-            document.body.appendChild(script);
+    // Carga segura de recursos
+    window.addEventListener('load', function() {
+        // 1. Ocultar preloader
+        var preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.style.opacity = '0';
+            setTimeout(function() {
+                preloader.style.display = 'none';
+            }, 500);
         }
 
-        // Mostrar página cuando todo esté listo
-        window.addEventListener('load', function() {
+        // 2. Mostrar contenido
+        document.body.classList.add('loaded');
+
+        // 3. Cargar script principal
+        var script = document.createElement('script');
+        script.src = 'js/script.js';
+        script.onerror = function() {
+            console.error('Error al cargar el script');
             document.body.classList.add('loaded');
-            setTimeout(function() {
-                document.getElementById('preloader').style.display = 'none';
-                document.body.classList.remove('preload');
-            }, 500);
-            
-            // Cargar script principal
-            loadScript('js/script.js', function() {
-                console.log('Script cargado correctamente');
-            });
-        });
+        };
+        document.body.appendChild(script);
+    });
     </script>
 </body>
 </html>
