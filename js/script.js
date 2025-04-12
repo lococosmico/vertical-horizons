@@ -1,60 +1,67 @@
-// Sistema de traducciones
+// Traducciones
 const translations = {
     fr: {
-        // ... tus traducciones al francés
+        // ... tus textos en francés
     },
     en: {
-        // ... tus traducciones al inglés
+        // ... tus textos en inglés
     }
 };
 
-// Función robusta para cambio de idioma
-function changeLanguage(lang) {
+// Función ultra-robusta
+function safeChangeLanguage(lang) {
     try {
-        // 1. Actualizar atributo HTML
-        document.documentElement.lang = lang;
-        
+        // 1. Actualizar HTML
+        if (document.documentElement) {
+            document.documentElement.lang = lang;
+        }
+
         // 2. Actualizar textos
-        const textElements = document.querySelectorAll('[data-i18n]');
-        textElements.forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[lang] && translations[lang][key]) {
-                el.textContent = translations[lang][key];
-            }
-        });
-        
-        // 3. Actualizar placeholders e imágenes
-        const updateAttributes = (selector, attr) => {
-            document.querySelectorAll(selector).forEach(el => {
-                const key = el.getAttribute(selector);
+        var textElements = document.querySelectorAll('[data-i18n]');
+        if (textElements) {
+            textElements.forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
-                    el[attr] = translations[lang][key];
+                    el.textContent = translations[lang][key];
                 }
             });
-        };
-        updateAttributes('[data-i18n-placeholder]', 'placeholder');
-        updateAttributes('[data-i18n-alt]', 'alt');
-        
-        // 4. Guardar preferencia
-        localStorage.setItem('siteLang', lang);
-        
+        }
+
+        // 3. Guardar preferencia
+        if (localStorage) {
+            localStorage.setItem('siteLang', lang);
+        }
     } catch (error) {
-        console.error('Error en changeLanguage:', error);
+        console.log('Error controlado:', error.message);
     }
 }
 
 // Inicialización segura
-document.addEventListener('DOMContentLoaded', () => {
-    // Configurar botones
-    const setupButton = (id, lang) => {
-        const btn = document.getElementById(id);
-        if (btn) btn.addEventListener('click', () => changeLanguage(lang));
-    };
-    setupButton('btn-fr', 'fr');
-    setupButton('btn-en', 'en');
+if (document.readyState !== 'loading') {
+    init();
+} else {
+    document.addEventListener('DOMContentLoaded', init);
+}
+
+function init() {
+    // Botones
+    var btnFr = document.getElementById('btn-fr');
+    var btnEn = document.getElementById('btn-en');
     
-    // Cargar idioma
-    const defaultLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
-    const savedLang = localStorage.getItem('siteLang') || defaultLang;
-    changeLanguage(savedLang);
-}); 
+    if (btnFr) btnFr.addEventListener('click', function() { safeChangeLanguage('fr'); });
+    if (btnEn) btnEn.addEventListener('click', function() { safeChangeLanguage('en'); });
+
+    // Idioma inicial
+    var lang = 'fr';
+    try {
+        if (localStorage.getItem('siteLang')) {
+            lang = localStorage.getItem('siteLang');
+        } else if (navigator.language) {
+            lang = navigator.language.startsWith('fr') ? 'fr' : 'en';
+        }
+    } catch (e) {
+        console.log('Acceso a localStorage bloqueado');
+    }
+    
+    safeChangeLanguage(lang);
+}
