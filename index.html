@@ -51,28 +51,39 @@
     <div id="preloader">
         <div class="spinner">Chargement en cours...</div>
     </div>
-    <nav>
-        <a href="#about" data-i18n="about">À propos</a>
-        <a href="#gallery" data-i18n="gallery">Galerie</a>
-        <a href="#" id="btn-formation" data-i18n="formation">Formation</a>
-        <a href="#contact" data-i18n="contact">Contact</a>
-    </nav>
-    
-    <!-- Sección Gallery (visible por defecto) -->
-    <section id="gallery" class="active-section">
-        <!-- Tus imágenes de galería -->
-    </section>
-    
-    <!-- Sección Formation (oculta inicialmente) -->
-    <section id="formation" style="display:none;">
-        <div class="formation-container">
-            <img src="img/photo2.jpg" alt="Formation escalade" class="formation-img">
-            <div class="formation-details">
-                <h3 data-i18n="formation_title">Formation Escalade Falaise</h3>
-                <p data-i18n="formation_text">Contenu détaillé de la formation...</p>
-            </div>
+<<nav>
+    <ul>
+        <li><a href="#about" data-i18n="about">À propos</a></li>
+        <li><a href="#gallery" class="active" data-i18n="gallery">Galerie</a></li>
+        <li><a href="#" id="btn-formation" data-i18n="formation">Formation</a></li>
+        <li><a href="#contact" data-i18n="contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Sección Gallery (visible por defecto) -->
+<section id="gallery" class="content-section active-section">
+    <!-- Tus imágenes actuales aquí -->
+    <div class="gallery-container">
+        <img src="img/JILL3700.JPG" alt="Escalade">
+        <img src="img/img1.jpg" alt="Panoramique">
+    </div>
+</section>
+    <!-- Tus imágenes de galería -->
+</section>
+
+<!-- Sección Formation (oculta inicialmente) -->
+<section id="formation" class="content-section" style="display:none;">
+    <div class="formation-container">
+        <div class="formation-image">
+            <img src="img/photo2.jpg" alt="Formation escalade" data-i18n-alt="formation_alt">
         </div>
-    </section>
+        <div class="formation-text">
+            <h3 data-i18n="formation_title">Formation Escalade Falaise</h3>
+            <p data-i18n="formation_text">Apprenez les techniques avancées...</p>
+            <button class="back-button" data-i18n="back_button">Retour à la galerie</button>
+        </div>
+    </div>
+</section>
     <!-- Contenido principal -->
     <div class="content">
         <!-- Botones de idioma -->
@@ -115,5 +126,31 @@
         document.body.appendChild(script);
     });
     </script>
+    <script>
+        // Controlador de secciones
+        document.getElementById('btn-formation').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Oculta todas las secciones
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Muestra solo formación
+            document.getElementById('formation').style.display = 'block';
+            
+            // Scroll suave (opcional)
+            window.scrollTo({
+                top: document.getElementById('formation').offsetTop - 20,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Botón de retorno
+        document.querySelector('.back-button').addEventListener('click', function() {
+            document.getElementById('formation').style.display = 'none';
+            document.getElementById('gallery').style.display = 'block';
+        });
+        </script>
 </body>
 </html>
