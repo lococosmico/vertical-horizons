@@ -4,306 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vertical Horizons</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* ESTILOS GENERALES */
-        body.preload {
-            visibility: hidden;
-            opacity: 0;
-            height: 100vh;
-            overflow: hidden;
-        }
-        body.loaded {
-            visibility: visible;
-            opacity: 1;
-            transition: opacity 0.4s ease-out;
-        }
+        /* Estilos críticos */
         body {
-            background-image: url('img/fondo.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             margin: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/fondo.jpg') center/cover fixed;
             color: white;
+            min-height: 100vh;
         }
         .content {
-            background-color: rgba(0, 0, 0, 0.7);
-            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
         }
-
-        /* HEADER */
-        header {
-            text-align: center;
-            padding: 2rem 0;
-        }
-        nav {
-            margin: 1rem 0;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        /* SELECTOR IDIOMA */
         .language-switcher {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
+            display: flex;
+            gap: 10px;
         }
         .language-switcher button {
             background: rgba(255,255,255,0.2);
             border: 1px solid white;
             color: white;
             padding: 8px 15px;
-            margin: 0 5px;
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s;
         }
-        .language-switcher button:hover {
-            background: rgba(255,255,255,0.4);
-        }
-
-        /* SECCIONES */
-        section {
-            padding: 2rem 0;
-            margin: 2rem 0;
-        }
-        h2 {
-            border-bottom: 2px solid #e74c3c;
-            padding-bottom: 10px;
-        }
-
-        /* GALERÍA */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .gallery img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            transition: transform 0.3s;
-        }
-        .gallery img:hover {
-            transform: scale(1.03);
-        }
-
-        /* NUEVA SECCIÓN FORMATION */
         .formation-container {
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
-            align-items: center;
             background: rgba(0,0,0,0.5);
             padding: 30px;
             border-radius: 10px;
-        }
-        .formation-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        .formation-image {
-            flex: 1;
-            min-width: 300px;
-        }
-        .formation-image img {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        /* FORMULARIO */
-        form {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: none;
-        }
-        button[type="submit"] {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        button[type="submit"]:hover {
-            background-color: #c0392b;
+            margin: 40px 0;
         }
     </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="preload">
+<body>
     <div class="content">
-        <!-- CABECERA -->
-        <header>
-            <h1 data-i18n="title">Vertical Horizons</h1>
-            <div class="language-switcher">
-                <button onclick="changeLanguage('fr')">FR</button>
-                <button onclick="changeLanguage('en')">EN</button>
-            </div>
-            <nav>
-                <a href="#about" data-i18n="about">À propos</a>
-                <a href="#formation" data-i18n="formation">Formation</a>
-                <a href="#gallery" data-i18n="gallery">Galerie</a>
-                <a href="#contact" data-i18n="contact">Contact</a>
-            </nav>
-        </header>
-
-        <!-- SECCIÓN ABOUT -->
-        <section id="about">
-            <h2 data-i18n="about_title">À propos</h2>
-            <p data-i18n="about_text">Bienvenue chez Vertical Horizons, votre école d'escalade en Suisse.</p>
-        </section>
-
-        <!-- NUEVA SECCIÓN FORMATION -->
+        <div class="language-switcher">
+            <button id="btn-fr">FR</button>
+            <button id="btn-en">EN</button>
+        </div>
+        
+        <!-- Añade aquí todas tus secciones -->
         <section id="formation">
-            <h2 data-i18n="formation_title">Formation Escalade Falaise</h2>
             <div class="formation-container">
                 <div class="formation-text">
-                    <p data-i18n="formation_text">Apprenez les techniques avancées d'escalade en extérieur avec nos guides certifiés.</p>
-                    <ul>
-                        <li data-i18n="formation_item1">Techniques d'assurage</li>
-                        <li data-i18n="formation_item2">Gestion des risques</li>
-                        <li data-i18n="formation_item3">Matériel professionnel</li>
-                    </ul>
+                    <h2 data-i18n="formation_title">Formation Escalade Falaise</h2>
+                    <p data-i18n="formation_text">Apprenez les techniques avancées...</p>
                 </div>
                 <div class="formation-image">
-                    <img src="img/photo2.jpg" alt="Formation escalade" data-i18n-alt="formation_alt">
+                    <img src="img/photo2.jpg" alt="Formation" data-i18n-alt="formation_alt">
                 </div>
             </div>
-        </section>
-
-        <!-- SECCIÓN GALERÍA -->
-        <section id="gallery">
-            <h2 data-i18n="gallery_title">Galerie</h2>
-            <div class="gallery">
-                <img src="img/JILL3700.JPG" alt="Escalade" data-i18n-alt="img1_alt">
-                <img src="img/img1.jpg" alt="Panoramique" data-i18n-alt="img2_alt">
-            </div>
-        </section>
-
-        <!-- SECCIÓN CONTACTO -->
-        <section id="contact">
-            <h2 data-i18n="contact_title">Contact</h2>
-            <form>
-                <input type="text" placeholder="Nom" required data-i18n-placeholder="name_ph">
-                <input type="email" placeholder="Email" required data-i18n-placeholder="email_ph">
-                <textarea placeholder="Message" required data-i18n-placeholder="msg_ph" rows="5"></textarea>
-                <button type="submit" data-i18n="submit_btn">Envoyer</button>
-            </form>
         </section>
     </div>
 
-    <!-- SCRIPT DE TRADUCCIONES -->
-    <script>
-    const translations = {
-        fr: {
-            title: "Vertical Horizons",
-            about: "À propos",
-            formation: "Formation",
-            gallery: "Galerie",
-            contact: "Contact",
-            about_title: "À propos",
-            about_text: "Bienvenue chez Vertical Horizons, votre école d'escalade en Suisse. Nous proposons des cours pour tous les âges et niveaux.",
-            formation_title: "Formation Escalade Falaise",
-            formation_text: "Apprenez les techniques avancées d'escalade en extérieur avec nos guides certifiés. Sécurité garantie et matériel fourni.",
-            formation_item1: "Techniques d'assurage",
-            formation_item2: "Gestion des risques",
-            formation_item3: "Matériel professionnel",
-            formation_alt: "Formation d'escalade en falaise",
-            gallery_title: "Galerie",
-            contact_title: "Contact",
-            name_ph: "Nom",
-            email_ph: "Email",
-            msg_ph: "Message",
-            submit_btn: "Envoyer",
-            img1_alt: "Escalade en falaise",
-            img2_alt: "Vue panoramique"
-        },
-        en: {
-            title: "Vertical Horizons",
-            about: "About",
-            formation: "Training",
-            gallery: "Gallery",
-            contact: "Contact",
-            about_title: "About Us",
-            about_text: "Welcome to Vertical Horizons, your climbing school in Switzerland. We offer courses for all ages and skill levels.",
-            formation_title: "Rock Climbing Training",
-            formation_text: "Learn advanced outdoor climbing techniques with our certified guides. Safety guaranteed and equipment provided.",
-            formation_item1: "Belaying techniques",
-            formation_item2: "Risk management",
-            formation_item3: "Professional equipment",
-            formation_alt: "Rock climbing training",
-            gallery_title: "Gallery",
-            contact_title: "Contact Us",
-            name_ph: "Name",
-            email_ph: "Email",
-            msg_ph: "Message",
-            submit_btn: "Send",
-            img1_alt: "Rock climbing",
-            img2_alt: "Panoramic view"
-        }
-    };
-
-    function changeLanguage(lang) {
-        try {
-            // 1. Actualizar atributo HTML
-            document.documentElement.lang = lang;
-            
-            // 2. Actualizar textos normales
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang]?.[key]) {
-                    el.textContent = translations[lang][key];
-                }
-            });
-            
-            // 3. Actualizar placeholders
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-                const key = el.getAttribute('data-i18n-placeholder');
-                if (translations[lang]?.[key]) {
-                    el.placeholder = translations[lang][key];
-                }
-            });
-            
-            // 4. Actualizar textos alternativos
-            document.querySelectorAll('[data-i18n-alt]').forEach(el => {
-                const key = el.getAttribute('data-i18n-alt');
-                if (translations[lang]?.[key]) {
-                    el.alt = translations[lang][key];
-                }
-            });
-            
-            // 5. Guardar preferencia
-            localStorage.setItem('siteLang', lang);
-            
-        } catch (error) {
-            console.error("Error al cambiar idioma:", error);
-        }
-    }
-
-    // Inicializar al cargar
-    document.addEventListener('DOMContentLoaded', () => {
-        const savedLang = localStorage.getItem('siteLang') || 'fr';
-        changeLanguage(savedLang);
-        document.body.classList.add('loaded');
-    });
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
