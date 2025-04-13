@@ -1,12 +1,13 @@
-<!DOCTYPE html>
+# Crear un nuevo index.html actualizado según los requerimientos
+
+new_index_content = """<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vertical Horizons</title>
-    <!-- Estilos críticos INLINE -->
+    <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
     <style>
-        /* PRELOADER */
         #preloader {
             position: fixed;
             top: 0;
@@ -21,8 +22,6 @@
             color: white;
             font-family: Arial, sans-serif;
         }
-        
-        /* FONDO Y ESTRUCTURA BASE */
         body {
             margin: 0;
             opacity: 0;
@@ -42,106 +41,114 @@
             margin: 0 auto;
             padding: 20px;
         }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            background-color: rgba(0,0,0,0.7);
+            margin: 0;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 10px 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .photo {
+            text-align: center;
+        }
+        .photo img {
+            max-width: 300px;
+            border-radius: 8px;
+        }
+        .photo p {
+            margin-top: 10px;
+        }
+        .lang { display: none; }
+        .lang.active { display: block; }
+        .language-switcher {
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
-    <!-- CSS principal (optimizado) -->
-    <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
 </head>
 <body>
-    <!-- Preloader visible -->
     <div id="preloader">
         <div class="spinner">Chargement en cours...</div>
     </div>
-<<nav>
-    <ul>
-        <li><a href="#about" data-i18n="about">À propos</a></li>
-        <li><a href="#gallery" class="active" data-i18n="gallery">Galerie</a></li>
-        <li><a href="#" id="btn-formation" data-i18n="formation">Formation</a></li>
-        <li><a href="#contact" data-i18n="contact">Contact</a></li>
-    </ul>
-</nav>
 
-<!-- Sección Gallery (visible por defecto) -->
-<section id="gallery" class="content-section active-section">
-    <!-- Tus imágenes actuales aquí -->
-    <div class="gallery-container">
-        <img src="img/JILL3700.JPG" alt="Escalade">
-        <img src="img/img1.jpg" alt="Panoramique">
-    </div>
-</section>
-    <!-- Tus imágenes de galería -->
-</section>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="formation/">Formation</a></li>
+            <li><a href="coaching/">Coaching</a></li>
+            <li><a href="entreprises/">Entreprises</a></li>
+            <li><a href="stages/">Stages</a></li>
+            <li><a href="voyages/">Voyages</a></li>
+            <li><a href="galerie/">Galerie</a></li>
+            <li><a href="contact/">Contact</a></li>
+        </ul>
+    </nav>
 
-<!-- Sección Formation (oculta inicialmente) -->
-<section id="formation" class="content-section" style="display:none;">
-    <div class="formation-container">
-        <div class="formation-text">
-            <h3 data-i18n="formation_title">Formation Escalade Falaise</h3>
-            <p data-i18n="formation_text">Apprenez les techniques avancées...</p>
-            <button class="back-button" data-i18n="back_button">Retour à la galerie</button>
+    <section id="gallery" class="content-section active-section">
+        <div class="gallery-container">
+            <div class="photo">
+                <img src="img/p1.jpg" alt="Escalade 1">
+                <p class="lang fr active">Escalade en salle</p>
+                <p class="lang en">Indoor climbing</p>
+            </div>
+            <div class="photo">
+                <img src="img/p2.jpg" alt="Escalade 2">
+                <p class="lang fr active">Escalade en falaise</p>
+                <p class="lang en">Outdoor climbing</p>
+            </div>
+            <div class="photo">
+                <img src="img/p3.jpg" alt="Vue sommet">
+                <p class="lang fr active">Vue depuis le sommet</p>
+                <p class="lang en">View from the summit</p>
+            </div>
         </div>
-    </div>
-</section>
-    <!-- Contenido principal -->
-    <div class="content">
-        <!-- Botones de idioma -->
-        <div class="language-switcher">
-            <button id="btn-fr">FR</button>
-            <button id="btn-en">EN</button>
-        </div>
-    
+    </section>
+
+    <div class="language-switcher">
+        <button onclick="setLanguage('fr')">FR</button>
+        <button onclick="setLanguage('en')">EN</button>
     </div>
 
-    <!-- Script optimizado -->
     <script>
-    // Carga segura de recursos
-    window.addEventListener('load', function() {
-        // 1. Ocultar preloader
-        var preloader = document.getElementById('preloader');
-        if (preloader) {
-            preloader.style.opacity = '0';
-            setTimeout(function() {
-                preloader.style.display = 'none';
-            }, 500);
-        }
-
-        // 2. Mostrar contenido
-        document.body.classList.add('loaded');
-
-        // 3. Cargar script principal
-        var script = document.createElement('script');
-        script.src = 'js/script.js';
-        script.onerror = function() {
-            console.error('Error al cargar el script');
+        window.addEventListener('load', function() {
+            var preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
+            }
             document.body.classList.add('loaded');
-        };
-        document.body.appendChild(script);
-    });
+        });
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang.' + lang).forEach(el => el.classList.add('active'));
+        }
     </script>
-    <script>
-        // Controlador de secciones
-        document.getElementById('btn-formation').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Oculta todas las secciones
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.style.display = 'none';
-            });
-            
-            // Muestra solo formación
-            document.getElementById('formation').style.display = 'block';
-            
-            // Scroll suave (opcional)
-            window.scrollTo({
-                top: document.getElementById('formation').offsetTop - 20,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Botón de retorno
-        document.querySelector('.back-button').addEventListener('click', function() {
-            document.getElementById('formation').style.display = 'none';
-            document.getElementById('gallery').style.display = 'block';
-        });
-        </script>
 </body>
 </html>
+"""
+
+# Guardar el nuevo archivo index.html
+new_index_path = "/mnt/data/index_final.html"
+with open(new_index_path, "w", encoding="utf-8") as f:
+    f.write(new_index_content)
+
+new_index_path
