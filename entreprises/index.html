@@ -28,9 +28,11 @@
       margin-bottom: 20px;
     }
 
+    /* Alineamos los botones de idioma a la parte superior derecha */
     .lang-toggle {
-      text-align: center;
-      margin-bottom: 30px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
 
     .lang-toggle button {
@@ -88,6 +90,7 @@
   <main>
     <h1>Entreprise</h1>
 
+    <!-- Botones de idioma alineados a la derecha -->
     <div class="lang-toggle">
       <button onclick="setLanguage('fr')">Français</button>
       <button onclick="setLanguage('en')">English</button>
