@@ -1,31 +1,134 @@
-<!-- Team building, sorties d'entreprise, ateliers -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>entreprises - Vertical Horizons</title>
+  <title>Entreprise - Vertical Horizons</title>
   <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../img/fondo.jpg') center/cover fixed;
+      color: white;
+      min-height: 100vh;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 12px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .lang-toggle {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .lang-toggle button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    section {
+      text-align: center;
+    }
+
+    section p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+    }
+
+    .back-button {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .back-button a {
+      background: white;
+      color: black;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+  </style>
 </head>
 <body>
   <main>
-    <nav>
-      <a href="../index.html">← Accueil / Home</a>
-    </nav>
-    <h1>Formation</h1>
+    <h1>Entreprise</h1>
+
     <div class="lang-toggle">
       <button onclick="setLanguage('fr')">Français</button>
       <button onclick="setLanguage('en')">English</button>
     </div>
+
     <section>
-      <p class="lang fr active">Nous proposons des formations en salle et en falaise, pour débutants comme pour grimpeurs avancés.</p>
-      <p class="lang en">We offer both indoor and outdoor climbing training, for beginners and experienced climbers.</p>
+      <h2 class="lang fr active">Nos offres pour les entreprises</h2>
+      <h2 class="lang en">Our offers for companies</h2>
+
+      <p class="lang fr active">
+        Vertical Horizons propose des activités de groupe adaptées aux besoins de votre entreprise. Que ce soit pour renforcer l'esprit d'équipe, organiser des journées de bien-être ou développer la cohésion entre vos collaborateurs, nous avons la solution idéale.
+      </p>
+      <p class="lang en">
+        Vertical Horizons offers group activities tailored to your company's needs. Whether it's to strengthen team spirit, organize wellness days, or develop cohesion among your employees, we have the ideal solution.
+      </p>
+
+      <ul class="lang fr active">
+        <li>Team-building en salle d'escalade ou en extérieur</li>
+        <li>Ateliers de gestion du stress et développement personnel</li>
+        <li>Sorties en pleine nature pour renforcer les liens</li>
+        <li>Formations en leadership et communication</li>
+      </ul>
+      <ul class="lang en">
+        <li>Team-building indoor or outdoor climbing sessions</li>
+        <li>Stress management and personal development workshops</li>
+        <li>Outdoor adventures to strengthen bonds</li>
+        <li>Leadership and communication training</li>
+      </ul>
     </section>
+
+    <div class="back-button">
+      <a href="../index.html">← Retour à l'accueil / Back to home</a>
+    </div>
+
+    <div class="back-button">
+      <a href="mailto:contact@verticalhorizons.ch">📩 Contact / Réserver</a>
+    </div>
+
     <footer>
       <p class="lang fr active">© 2025 Vertical Horizons. Tous droits réservés.</p>
       <p class="lang en">© 2025 Vertical Horizons. All rights reserved.</p>
     </footer>
   </main>
+
   <script>
     function setLanguage(lang) {
       document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
