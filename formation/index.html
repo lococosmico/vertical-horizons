@@ -28,18 +28,6 @@
       margin-bottom: 20px;
     }
 
-    .lang-toggle {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .lang-toggle button {
-      margin: 0 10px;
-      padding: 10px 20px;
-      font-size: 1em;
-      cursor: pointer;
-    }
-
     .photo {
       text-align: center;
       margin: 30px 0;
@@ -77,14 +65,16 @@
   </style>
 </head>
 <body>
-  
-    <main>
+
+  <!-- Botones de idioma (fuera del main, para que se ubiquen arriba a la derecha) -->
+  <div class="lang-toggle">
+    <button onclick="setLanguage('fr')">FR</button>
+    <button onclick="setLanguage('en')">EN</button>
+  </div>
+
+  <main>
     <h1>Formation</h1>
 
-    <div class="lang-toggle">
-        <button onclick="setLanguage('fr')">FR</button>
-        <button onclick="setLanguage('en')">EN</button>
-      </div>
     <section>
       <p class="lang fr active">
         Nos formations s'adressent à tous les niveaux : initiation, progression technique ou autonomie en falaise. Encadrées par des moniteurs certifiés, elles combinent plaisir, sécurité et performance.
