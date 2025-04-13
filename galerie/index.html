@@ -1,56 +1,136 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galerie - Vertical Horizons</title>
-    <link rel="stylesheet" href="../styles.css">
-    <style>
-        body { font-family: sans-serif; padding: 20px; max-width: 900px; margin: auto; }
-        .lang { display: none; }
-        .lang.active { display: block; }
-        .lang-toggle { margin-bottom: 20px; }
-        .photo { margin-bottom: 30px; text-align: center; }
-        .photo img { max-width: 100%; height: auto; border-radius: 8px; }
-        .photo p { margin-top: 10px; font-weight: bold; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galerie - Vertical Horizons</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('../img/fondo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-shadow: 1px 1px 3px black;
+    }
+
+    main {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      max-width: 1000px;
+      margin: 40px auto;
+      border-radius: 12px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .lang-toggle {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .lang-toggle button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .photo {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .photo img {
+      max-width: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .photo p {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .lang { display: none; }
+    .lang.active { display: block; }
+
+    .back-button {
+      display: block;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .back-button a {
+      background: white;
+      color: black;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .back-button a:hover {
+      background: #ddd;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: #ccc;
+      font-size: 0.9em;
+    }
+  </style>
 </head>
 <body>
+  <main>
     <h1>Galerie / Gallery</h1>
+
     <div class="lang-toggle">
-        <button onclick="setLanguage('fr')">Français</button>
-        <button onclick="setLanguage('en')">English</button>
+      <button onclick="setLanguage('fr')">Français</button>
+      <button onclick="setLanguage('en')">English</button>
     </div>
 
     <div class="photo">
-        <img src="../img/JILL3700.JPG" alt="Escalade en falaise / Cliff climbing">
-        <p class="lang fr active">Escalade en falaise</p>
-        <p class="lang en">Cliff climbing</p>
+      <img src="../img/JILL3700.JPG" alt="Escalade en falaise / Cliff climbing">
+      <p class="lang fr active">Escalade en falaise</p>
+      <p class="lang en">Cliff climbing</p>
     </div>
 
     <div class="photo">
-        <img src="../img/fondo.jpg" alt="Grimpeur sur une paroi rocheuse / Climber on a rock wall">
-        <p class="lang fr active">Grimpeur sur une paroi rocheuse</p>
-        <p class="lang en">Climber on a rock wall</p>
+      <img src="../img/fondo.jpg" alt="Grimpeur sur une paroi rocheuse / Climber on a rock wall">
+      <p class="lang fr active">Grimpeur sur une paroi rocheuse</p>
+      <p class="lang en">Climber on a rock wall</p>
     </div>
 
     <div class="photo">
-        <img src="../img/img1.jpg" alt="Vue panoramique depuis le sommet / Panoramic view from the summit">
-        <p class="lang fr active">Vue panoramique depuis le sommet</p>
-        <p class="lang en">Panoramic view from the summit</p>
+      <img src="../img/img1.jpg" alt="Vue panoramique depuis le sommet / Panoramic view from the summit">
+      <p class="lang fr active">Vue panoramique depuis le sommet</p>
+      <p class="lang en">Panoramic view from the summit</p>
     </div>
 
-    <footer style="margin-top: 40px;">
-        <p class="lang fr active">© 2025 Vertical Horizons. Tous droits réservés.</p>
-        <p class="lang en">© 2025 Vertical Horizons. All rights reserved.</p>
+    <div class="back-button">
+      <a href="../index.html">← Retour à l'accueil / Back to home</a>
+    </div>
+
+    <footer>
+      <p class="lang fr active">© 2025 Vertical Horizons. Tous droits réservés.</p>
+      <p class="lang en">© 2025 Vertical Horizons. All rights reserved.</p>
     </footer>
+  </main>
 
-    <script>
-        function setLanguage(lang) {
-            document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.lang.' + lang).forEach(el => el.classList.add('active'));
-        }
-    </script>
+  <script>
+    function setLanguage(lang) {
+      document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang.' + lang).forEach(el => el.classList.add('active'));
+    }
+  </script>
 </body>
 </html>
-
