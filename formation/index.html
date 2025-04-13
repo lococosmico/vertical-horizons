@@ -1,1 +1,118 @@
-<!-- Formation indoor & outdoor -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formation - Vertical Horizons</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../img/fondo.jpg') center/cover fixed;
+      color: white;
+      min-height: 100vh;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 12px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .lang-toggle {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .lang-toggle button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .photo {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .photo img {
+      max-width: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .lang { display: none; }
+    .lang.active { display: block; }
+
+    .back-button {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .back-button a {
+      background: white;
+      color: black;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Formation</h1>
+
+    <div class="lang-toggle">
+      <button onclick="setLanguage('fr')">Français</button>
+      <button onclick="setLanguage('en')">English</button>
+    </div>
+
+    <section>
+      <p class="lang fr active">
+        Nos formations s'adressent à tous les niveaux : initiation, progression technique ou autonomie en falaise. Encadrées par des moniteurs certifiés, elles combinent plaisir, sécurité et performance.
+      </p>
+      <p class="lang en">
+        Our training sessions are designed for all levels: introduction, technical progression, or outdoor autonomy. Led by certified instructors, they blend enjoyment, safety, and performance.
+      </p>
+    </section>
+
+    <div class="photo">
+      <img src="../img/p1.jpg" alt="Formation escalade">
+    </div>
+
+    <div class="back-button">
+      <a href="../index.html">← Retour à l'accueil / Back to home</a>
+    </div>
+
+    <footer>
+      <p class="lang fr active">© 2025 Vertical Horizons. Tous droits réservés.</p>
+      <p class="lang en">© 2025 Vertical Horizons. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <script>
+    function setLanguage(lang) {
+      document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang.' + lang).forEach(el => el.classList.add('active'));
+    }
+  </script>
+</body>
+</html>
