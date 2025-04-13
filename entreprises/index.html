@@ -28,18 +28,27 @@
       margin-bottom: 20px;
     }
 
-    /* Alineamos los botones de idioma a la parte superior derecha */
+    /* Estilo para los botones de idioma solo con texto */
     .lang-toggle {
-      position: absolute;
+      position: fixed;
       top: 20px;
       right: 20px;
+      z-index: 10;
     }
 
     .lang-toggle button {
-      margin: 0 10px;
-      padding: 10px 20px;
-      font-size: 1em;
+      background-color: transparent;
+      border: 1px solid white;
+      color: white;
+      padding: 5px 15px;
+      font-size: 16px;
+      margin: 0 5px;
       cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .lang-toggle button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
     }
 
     section {
@@ -90,10 +99,10 @@
   <main>
     <h1>Entreprise</h1>
 
-    <!-- Botones de idioma alineados a la derecha -->
+    <!-- Botones de idioma con texto -->
     <div class="lang-toggle">
-      <button onclick="setLanguage('fr')">Français</button>
-      <button onclick="setLanguage('en')">English</button>
+      <button onclick="setLanguage('fr')">FR</button>
+      <button onclick="setLanguage('en')">EN</button>
     </div>
 
     <section>
