@@ -305,7 +305,7 @@
         <div class="flex justify-center mb-10">
           <div class="inline-flex p-1 bg-white rounded-full shadow-sm">
             <button
-              class="activity-tab active px-6 py-2 rounded-full bg-primary text-white font-medium whitespace-nowrap"
+              class="activity-tab px-6 py-2 rounded-full text-gray-700 font-medium whitespace-nowrap"
               data-target="indoor"
             >
               <i class="ri-building-line mr-2"></i>
@@ -313,7 +313,7 @@
               <span class="language-content en-content hidden">Indoor Climbing</span>
             </button>
             <button
-              class="activity-tab px-6 py-2 rounded-full text-gray-700 font-medium whitespace-nowrap"
+              class="activity-tab active px-6 py-2 rounded-full bg-primary text-white font-medium whitespace-nowrap"
               data-target="outdoor"
             >
               <i class="ri-landscape-line mr-2"></i>
@@ -332,7 +332,7 @@
         </div>
 
         <!-- Indoor Activities -->
-    <div class="activity-content" id="indoor-content">
+    <div class="activity-content hidden" id="indoor-content">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Card 1 -->
         <div class="activity-card bg-white rounded-lg shadow-md overflow-hidden relative group">
@@ -457,7 +457,7 @@
     </div>
 
     <!-- Outdoor Activities -->
-    <div class="activity-content hidden" id="outdoor-content">
+    <div class="activity-content" id="outdoor-content">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Card 1 -->
         <div class="activity-card bg-white rounded-lg shadow-md overflow-hidden relative group">
@@ -988,6 +988,7 @@
     
         // Mostrar estado de carga
         submitButton.disabled = true;
+        const originalHTML = submitButton.innerHTML;
         submitButton.innerHTML = `
           <i class="ri-loader-4-line ri-lg animate-spin"></i>
           <span class="language-content fr-content">Envoi en cours...</span>
@@ -1005,15 +1006,19 @@
             form.reset();
             confirmation.classList.remove('hidden');
             setTimeout(() => confirmation.classList.add('hidden'), 5000);
+            submitButton.innerHTML = originalHTML;
+            submitButton.disabled = false;
+          } else {
+            throw new Error('Form submission failed');
           }
         } catch (error) {
           console.error('Error:', error);
-        } finally {
-          submitButton.innerHTML = `
-            <span class="language-content fr-content">Envoyer le message</span>
-            <span class="language-content en-content hidden">Send message</span>
-          `;
+          submitButton.innerHTML = originalHTML;
           submitButton.disabled = false;
+          // Fallback: submit form traditionally
+          setTimeout(() => {
+            form.submit();
+          }, 500);
         }
       });
     </script>
