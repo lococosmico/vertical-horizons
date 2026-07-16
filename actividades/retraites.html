@@ -135,17 +135,17 @@
             <a
               href="../a-propos.html"
               class="text-gray-700 hover:text-primary transition-colors"
-              >À propos / About</a
+              ><span class="language-content fr-content">À propos</span><span class="language-content en-content hidden">About</span></a
             >
             <a
               href="/index.html#activities"
               class="text-gray-700 hover:text-primary transition-colors"
-              >Activités / Activities</a
+              ><span class="language-content fr-content">Activités</span><span class="language-content en-content hidden">Activities</span></a
             >
             <a
               href="/index.html#booking"
               class="text-gray-700 hover:text-primary transition-colors"
-              >Réservation / Booking</a
+              ><span class="language-content fr-content">Réservation</span><span class="language-content en-content hidden">Booking</span></a
             >
             <a
               href="/index.html#contact"
@@ -170,17 +170,17 @@
           <a
             href="../a-propos.html"
             class="py-2 text-gray-700 hover:text-primary transition-colors"
-            >À propos / About</a
+            ><span class="language-content fr-content">À propos</span><span class="language-content en-content hidden">About</span></a
           >
           <a
             href="/index.html#activities"
             class="py-2 text-gray-700 hover:text-primary transition-colors"
-            >Activités / Activities</a
+            ><span class="language-content fr-content">Activités</span><span class="language-content en-content hidden">Activities</span></a
           >
           <a
             href="/index.html#booking"
             class="py-2 text-gray-700 hover:text-primary transition-colors"
-            >Réservation / Booking</a
+            ><span class="language-content fr-content">Réservation</span><span class="language-content en-content hidden">Booking</span></a
           >
           <a
             href="/index.html#contact"
@@ -589,33 +589,48 @@
           </div>
         </div>
 
-        <!-- Prochaines Dates -->
+        <!-- Prochaines dates -->
         <div class="mb-12">
           <h3 class="text-xl font-semibold text-primary mb-6">
-            <span class="language-content fr-content">Prochaines dates disponibles</span>
-            <span class="language-content en-content hidden">Upcoming available dates</span>
+            <span class="language-content fr-content">Prochaines dates</span>
+            <span class="language-content en-content hidden">Upcoming dates</span>
           </h3>
-          <div class="grid md:grid-cols-3 gap-4">
-            <div class="border border-primary rounded-lg p-4 text-center">
-              <p class="font-bold text-primary">15-16 Juin 2025</p>
-              <p class="text-sm text-gray-600">
-                <span class="language-content fr-content">2 jours - 4 places</span>
-                <span class="language-content en-content hidden">2 days - 4 spots</span>
-              </p>
-            </div>
-            <div class="border border-primary rounded-lg p-4 text-center">
-              <p class="font-bold text-primary">10-12 Août 2025</p>
-              <p class="text-sm text-gray-600">
-                <span class="language-content fr-content">3 jours - 2 places</span>
-                <span class="language-content en-content hidden">3 days - 2 spots</span>
-              </p>
-            </div>
-            <div class="border border-primary rounded-lg p-4 text-center">
-              <p class="font-bold text-primary">20-22 Septembre 2025</p>
-              <p class="text-sm text-gray-600">
-                <span class="language-content fr-content">3 jours - 6 places</span>
-                <span class="language-content en-content hidden">3 days - 6 spots</span>
-              </p>
+          <div class="rounded-2xl border border-gray-200 bg-gray-50 p-6">
+            <p class="text-gray-700 mb-6">
+              <span class="language-content fr-content">Les prochaines retraites seront annoncées dès leur validation. Nous pouvons également préparer un format privé ou sur mesure selon votre niveau et votre calendrier.</span>
+              <span class="language-content en-content hidden">The next retreats will be announced once confirmed. We can also prepare a private or tailored format based on your level and schedule.</span>
+            </p>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="border border-primary rounded-lg p-4 text-center bg-white">
+                <p class="font-bold text-primary">
+                  <span class="language-content fr-content">À confirmer</span>
+                  <span class="language-content en-content hidden">To be confirmed</span>
+                </p>
+                <p class="text-sm text-gray-600 mt-2">
+                  <span class="language-content fr-content">Format 2 jours</span>
+                  <span class="language-content en-content hidden">2-day format</span>
+                </p>
+              </div>
+              <div class="border border-primary rounded-lg p-4 text-center bg-white">
+                <p class="font-bold text-primary">
+                  <span class="language-content fr-content">À confirmer</span>
+                  <span class="language-content en-content hidden">To be confirmed</span>
+                </p>
+                <p class="text-sm text-gray-600 mt-2">
+                  <span class="language-content fr-content">Format 3 jours</span>
+                  <span class="language-content en-content hidden">3-day format</span>
+                </p>
+              </div>
+              <div class="border border-primary rounded-lg p-4 text-center bg-white">
+                <p class="font-bold text-primary">
+                  <span class="language-content fr-content">Sur demande</span>
+                  <span class="language-content en-content hidden">On request</span>
+                </p>
+                <p class="text-sm text-gray-600 mt-2">
+                  <span class="language-content fr-content">Retraite privée</span>
+                  <span class="language-content en-content hidden">Private retreat</span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -657,9 +672,9 @@
             </label>
             <select id="date" name="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
               <option value="">-- Sélectionnez --</option>
-              <option value="15-16 Juin 2025">15-16 Juin 2025 (2 jours - CHF 550)</option>
-              <option value="10-12 Août 2025">10-12 Août 2025 (3 jours - CHF 750)</option>
-              <option value="20-22 Septembre 2025">20-22 Septembre 2025 (3 jours - CHF 750)</option>
+              <option value="Format 2 jours - À confirmer">Format 2 jours - À confirmer</option>
+              <option value="Format 3 jours - À confirmer">Format 3 jours - À confirmer</option>
+              <option value="Retraite privée - Sur demande">Retraite privée - Sur demande</option>
             </select>
           </div>
           <div class="md:col-span-2">
