@@ -182,7 +182,7 @@
             src="img/logo.jpg"
             alt="Vertical Horizons Logo"
             class="w-12 h-12 rounded-full"
-          / width="393" height="441" decoding="async">
+          width="393" height="441" decoding="async">
           <span class="text-3xl font-['Pacifico'] text-primary"
             >Vertical Horizons</span
           >
@@ -206,7 +206,7 @@
           </div>
           <nav class="hidden md:flex items-center space-x-6">
             <a
-              href="/a-propos.html"
+              href="a-propos.html"
               class="text-gray-700 hover:text-primary transition-colors"
               ><span class="language-content fr-content">À propos</span><span class="language-content en-content hidden">About</span></a
             >
@@ -220,6 +220,7 @@
               class="text-gray-700 hover:text-primary transition-colors"
               ><span class="language-content fr-content">Réservation</span><span class="language-content en-content hidden">Booking</span></a
             >
+            <a href="calendrier/index.html" class="text-gray-700 hover:text-primary transition-colors"><span class="language-content fr-content">Calendrier</span><span class="language-content en-content hidden">Calendar</span></a>
             <a
               href="#contact"
               class="text-gray-700 hover:text-primary transition-colors"
@@ -241,7 +242,7 @@
       >
         <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
           <a
-            href="/a-propos.html"
+            href="a-propos.html"
             class="py-2 text-gray-700 hover:text-primary transition-colors"
             ><span class="language-content fr-content">À propos</span><span class="language-content en-content hidden">About</span></a
           >
@@ -255,6 +256,7 @@
             class="py-2 text-gray-700 hover:text-primary transition-colors"
             ><span class="language-content fr-content">Réservation</span><span class="language-content en-content hidden">Booking</span></a
           >
+          <a href="calendrier/index.html" class="py-2 text-gray-700 hover:text-primary transition-colors"><span class="language-content fr-content">Calendrier</span><span class="language-content en-content hidden">Calendar</span></a>
           <a
             href="#contact"
             class="py-2 text-gray-700 hover:text-primary transition-colors"
@@ -563,7 +565,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="activity-card bg-white rounded-lg shadow-md overflow-hidden relative group">
               <a href="actividades/team-building-indoor.html" class="block aspect-square overflow-hidden">
-                <img src="img/team-building-indoor.jpg" alt="Team building indoor" class="w-full h-full object-cover" / width="1024" height="1536" decoding="async">
+                <img src="img/team-building-indoor.jpg" alt="Team building indoor" class="w-full h-full object-cover" width="1024" height="1536" decoding="async">
               </a>
               <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6 text-white">
                 <h3 class="text-xl font-semibold mb-2">
@@ -586,7 +588,7 @@
 
             <div class="activity-card bg-white rounded-lg shadow-md overflow-hidden relative group">
               <a href="actividades/team-building-outdoor.html" class="block aspect-square overflow-hidden">
-                <img src="img/entreprise-outdoor.jpg" alt="Team building outdoor" class="w-full h-full object-cover" / width="1024" height="1536" decoding="async">
+                <img src="img/entreprise-outdoor.jpg" alt="Team building outdoor" class="w-full h-full object-cover" width="1024" height="1536" decoding="async">
               </a>
               <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6 text-white">
                 <h3 class="text-xl font-semibold mb-2">
@@ -813,6 +815,19 @@
       </div>
      </div>
     </section>
+    <!-- Upcoming activities -->
+    <section id="upcoming-activities" class="py-16 bg-white">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-2"><span class="language-content fr-content">Prochaines activités</span><span class="language-content en-content hidden">Upcoming activities</span></h2>
+            <p class="text-gray-600"><span class="language-content fr-content">Trouvez une date pour apprendre, progresser et pratiquer.</span><span class="language-content en-content hidden">Find a date to learn, progress and practise.</span></p>
+          </div>
+          <a href="calendrier/index.html" class="text-primary font-semibold hover:text-secondary"><span class="language-content fr-content">Voir tout le calendrier</span><span class="language-content en-content hidden">View the full calendar</span><i class="ri-arrow-right-line ml-2" aria-hidden="true"></i></a>
+        </div>
+        <div data-upcoming-events class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+      </div>
+    </section>
     <!-- Contact Section -->
      <section id="contact" class="py-16 bg-gray-50">
   <div class="container mx-auto px-4">
@@ -1034,12 +1049,14 @@
       });
     </script>
     <!-- Footer -->
+    <div id="eventModal" class="calendar-modal fixed inset-0 z-50 bg-black/60 p-4 overflow-y-auto" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="eventModalTitle"><div class="max-w-2xl mx-auto mt-8 bg-white rounded-2xl p-6 md:p-8" data-event-modal-content></div></div>
     <footer class="bg-gray-900 text-white py-12">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Columna 1: Logo y redes -->
           <div>
             <a href="index.html" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">Vertical Horizons</a>
+            <div class="flex items-center gap-3 mb-4" aria-label="Partenaires et qualifications"><img src="img/JS rojo.jpg" alt="Logo J+S" class="h-12 w-auto object-contain bg-white rounded px-2" width="412" height="420" loading="lazy" decoding="async"><img src="img/logo-asgm.png" alt="Logo ASGM" class="h-12 w-auto object-contain bg-white rounded px-2" width="300" height="499" loading="lazy" decoding="async"></div>
             <p class="text-gray-400 mb-6">
               <span class="language-content fr-content">Votre partenaire d'escalade en Suisse</span>
               <span class="language-content en-content hidden">Your climbing partner in Switzerland</span>
@@ -1124,6 +1141,8 @@
         </div>
       </div>
     </footer>
+    <script src="data/events.js"></script>
+    <script src="js/calendar.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // Character counter for message
