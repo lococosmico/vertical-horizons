@@ -46,6 +46,7 @@
     .calendar-month-bar { background: rgba(255, 255, 255, 0.96); border: 1px solid rgba(47, 79, 79, 0.14); border-radius: 14px; padding: 0.75rem 1rem; box-shadow: 0 8px 24px rgba(28, 45, 43, 0.08); }
     .calendar-month-label { color: #2F4F4F; letter-spacing: 0.01em; }
     .calendar-month-button { background: #f4efe6; border: 1px solid rgba(139, 115, 85, 0.35); color: #2F4F4F; min-width: 2.5rem; }
+    .calendar-month-button-label { display: none; }
     .calendar-month-button:hover { background: #e8ddca; }
     .calendar-weekday { background: #2F4F4F; color: #f8f4ec; }
     .calendar-day { background: rgba(255, 255, 255, 0.96); }
@@ -58,6 +59,12 @@
       .calendar-month-grid .calendar-day-muted { min-height: 5.5rem; padding: 0.45rem 0.25rem; }
       .calendar-month-grid .calendar-detail-btn { margin-top: 0.35rem; padding: 0.35rem 0.25rem; font-size: 0.64rem; line-height: 1.15; overflow-wrap: anywhere; }
       .calendar-month-grid .calendar-detail-btn span { margin-top: 0.2rem; font-size: 0.58rem; }
+      .calendar-month-heading { align-items: stretch; flex-direction: column; }
+      .calendar-month-heading h2 { font-size: 1.35rem; }
+      .calendar-month-bar { justify-content: space-between; padding: 0.5rem; }
+      .calendar-month-label { min-width: 0 !important; flex: 1; }
+      .calendar-month-button { min-width: 2.25rem; min-height: 2.25rem; padding: 0.35rem 0.6rem; }
+      .calendar-month-button-label { display: inline; font-size: 0.7rem; white-space: nowrap; }
     }
     .calendar-register-btn, .calendar-interest-btn { background-color: #8B7355 !important; color: #fff !important; opacity: 1 !important; transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease; }
     .calendar-register-btn:hover, .calendar-interest-btn:hover { background-color: #6f5a45 !important; transform: translateY(-1px); box-shadow: 0 5px 12px rgba(47, 79, 79, .18); }
@@ -112,9 +119,9 @@
     <section class="py-12">
       <div class="container mx-auto px-4 max-w-6xl">
         <div class="flex flex-wrap gap-2 mb-8" data-calendar-filters aria-label="Filtrer les activités"></div>
-        <div class="hidden md:flex items-center justify-between gap-4 mb-5">
+        <div class="calendar-month-heading flex items-center justify-between gap-4 mb-5">
           <h2 class="text-2xl font-bold text-primary"><span class="language-content fr-content">Vue mensuelle</span><span class="language-content en-content hidden">Monthly view</span></h2>
-          <div class="calendar-month-bar flex items-center gap-2"><button type="button" data-calendar-prev class="calendar-month-button px-3 py-2 rounded-button" aria-label="Mois précédent">‹</button><span data-calendar-month-label class="calendar-month-label min-w-44 text-center font-semibold"></span><button type="button" data-calendar-next class="calendar-month-button px-3 py-2 rounded-button" aria-label="Mois suivant">›</button></div>
+          <div class="calendar-month-bar flex items-center gap-2"><button type="button" data-calendar-prev class="calendar-month-button px-3 py-2 rounded-button" aria-label="Mois précédent"><span aria-hidden="true">‹</span><span class="calendar-month-button-label">Mois précédent</span></button><span data-calendar-month-label class="calendar-month-label min-w-44 text-center font-semibold"></span><button type="button" data-calendar-next class="calendar-month-button px-3 py-2 rounded-button" aria-label="Mois suivant"><span aria-hidden="true">›</span><span class="calendar-month-button-label">Mois suivant</span></button></div>
         </div>
         <div data-calendar-month class="calendar-month-grid grid gap-px bg-gray-200 rounded-2xl overflow-hidden mb-10" aria-label="Calendrier mensuel"></div>
         <h2 class="md:hidden text-2xl font-bold text-primary mb-5"><span class="language-content fr-content">Prochaines activités</span><span class="language-content en-content hidden">Upcoming activities</span></h2>
