@@ -573,4 +573,73 @@ window.VERTICAL_HORIZONS_EVENTS = {
   }
   const todra = data.events.find(function (event) { return event.id === "todra-2027-01-04"; });
   if (todra) todra.includedNote = "Selon l'hébergement choisi, une partie des repas peut être comprise dans le séjour. Cette information dépend de l'hébergement retenu et sert uniquement d'aide au budget.";
+
+  const englishCopy = {
+    "Technique & tactique d'escalade": {
+      title: "Climbing technique & tactics",
+      subtitle: "Self-analysis & individual progression",
+      shortDescription: "Observe, understand, experiment and progress according to your own needs.",
+      description: "A day dedicated to observing and analysing your climbing. The aim is to identify strengths, difficulties and areas for progression, then experiment with practical solutions adapted to each participant. The work may focus on movement, body positioning, balance, footwork, route reading, effort management and climbing tactics.",
+      safetyNote: "The location and content may be adapted to the weather, rock conditions and the group's level."
+    },
+    "Manipulations de corde": {
+      title: "Rope handling",
+      subtitle: "Technical workshops adapted to your level",
+      shortDescription: "Practical workshops to review, understand and master rope handling skills.",
+      description: "A practical day to review and develop rope handling skills, with each participant working at their own level. Depending on the group's needs, workshops may cover setting up anchors, top-rope or lead climbing systems, rope management, abseiling, dynamic belaying and situations encountered on multi-pitch routes.",
+      safetyNote: "The exercises, location and techniques are adapted to the participants' level and safety conditions."
+    },
+    "Technique & évolution": {
+      title: "Technique & progression",
+      subtitle: "Personalised follow-up",
+      shortDescription: "Review progress, develop key areas and build the next steps.",
+      description: "A session focused on personalised progression. We review progress, difficulties and areas to develop, then continue working on movement, route reading, tactics, effort management or other goals specific to each participant.",
+      safetyNote: "The location and content may be adapted to the conditions, level and goals of the group."
+    },
+    "Grande voie": {
+      title: "Multi-pitch climbing",
+      subtitle: "Guided outing adapted to the group",
+      shortDescription: "A guided outing selected according to the weather and the group's level.",
+      description: "A multi-pitch outing adapted to the group's level, experience and goals. The day may include route preparation, equipment organisation, climbing, communication, anchor management and belaying.",
+      safetyNote: "The route and sector will be selected according to the weather, conditions, level and experience of the group."
+    },
+    "Clinic technique d'escalade en rocher": {
+      title: "Rock climbing technique clinic",
+      subtitle: "Footwork, centre of gravity & mobility",
+      shortDescription: "A four-hour morning clinic focused on footwork, moving the centre of gravity and mobility.",
+      description: "A four-hour rock climbing technique clinic focused on footwork, moving the centre of gravity and mobility. The morning combines observation, exercises and practical work adapted to the group's level. The afternoon is free for individual practice in the Chablais area and to continue applying the morning's work.",
+      duration: "4 hours in the morning; afternoon free for practice",
+      safetyNote: "The sector and content may be adapted to the weather, rock conditions and the group's level."
+    },
+    "Cours de grande voie - niveau 1": {
+      title: "Multi-pitch climbing course - level 1",
+      subtitle: "Technical and safety fundamentals for multi-pitch routes",
+      shortDescription: "A course covering the technical and safety fundamentals needed to progress on multi-pitch routes.",
+      description: "A full day focused on the technical fundamentals and safety rules for progressing on multi-pitch routes. The course covers anchor building, belaying from above, communication and rope-team organisation, as well as abseiling techniques. All the key skills are explained and then practised on a route in the Eole sector, in Chablais.",
+      duration: "1 day",
+      safetyNote: "The sector, route and content may be adapted to the weather, rock conditions and the group's level."
+    },
+    "Coaching / entraînement escalade": {
+      title: "Climbing coaching / training",
+      subtitle: "Structured progression group",
+      shortDescription: "Structured group training built around a progression cycle.",
+      description: "A structured group training session built around a progression cycle: strength, power, endurance, resistance, technique, mobility, physical preparation, specific bouldering or route work, injury prevention and training strategy.",
+      location: "Villeneuve - indoor route / bouldering or Monthey - indoor bouldering"
+    },
+    "Hatha Yoga - Ollon": {
+      title: "Hatha Yoga - Ollon",
+      subtitle: "General class accessible to everyone",
+      shortDescription: "A general Hatha Yoga class, particularly beneficial for climbers.",
+      description: "A Hatha Yoga class accessible to everyone. The practice develops mobility, flexibility, strength, balance, breathing, concentration, body awareness, recovery and movement control."
+    },
+    "El Chorro – Climbing & Adventure": { title: "El Chorro - climbing & adventure", subtitle: "Dates to be confirmed", shortDescription: "Five days of climbing, training and adventure in Andalusia." },
+    "Todra – Morocco Climbing & Adventure": { title: "Todra - Morocco climbing & adventure", subtitle: "6 days", shortDescription: "A climbing and adventure trip in the Todra Gorges and surrounding area." },
+    "Costa Blanca – Winter Climbing": { title: "Costa Blanca - winter climbing", subtitle: "Project", shortDescription: "A sunny climbing trip on the Costa Blanca." },
+    "Leonidio – Mediterranean Climbing": { title: "Leonidio - Mediterranean climbing", subtitle: "Project", shortDescription: "A climbing and adventure trip to Leonidio, Greece." }
+  };
+  data.events.concat(data.recurringTemplates || []).forEach(function (event) {
+    const copy = englishCopy[event.title];
+    if (!copy) return;
+    Object.keys(copy).forEach(function (key) { event[key === "title" ? "titleEn" : key === "subtitle" ? "subtitleEn" : key === "location" ? "locationEn" : key === "shortDescription" ? "shortDescriptionEn" : key === "description" ? "descriptionEn" : key === "duration" ? "durationEn" : key === "safetyNote" ? "safetyNoteEn" : key] = copy[key]; });
+  });
 })(window.VERTICAL_HORIZONS_EVENTS);
