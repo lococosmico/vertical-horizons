@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Informations légales et coordonnées de Vertical Horizons.">
+  <link rel="canonical" href="https://verticalhorizons.ch/mentions-legales.html">
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <title>Informations légales | Vertical Horizons</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Montserrat', sans-serif; }
+    .legal-section { max-width: 800px; margin: 0 auto; }
+    .legal-section h2 { border-bottom: 2px solid #2F4F4F; padding-bottom: 8px; margin-top: 32px; }
+    .language-content { display: none; }
+    .language-content.active { display: block; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-white/90 shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-3"><img src="img/logo.jpg" alt="Vertical Horizons" class="w-12 h-12 rounded-full" width="393" height="441" decoding="async"><span class="text-2xl md:text-3xl font-semibold text-[#2F4F4F]">Vertical Horizons</span></a>
+      <div class="flex items-center bg-gray-100 rounded-full p-1" aria-label="Language"><button type="button" class="language-btn active px-4 py-2 rounded-full bg-white text-[#2F4F4F] font-medium shadow-sm" data-lang="fr" aria-pressed="true">FR</button><button type="button" class="language-btn px-4 py-2 rounded-full text-gray-600 font-medium" data-lang="en" aria-pressed="false">EN</button></div>
+    </div>
+  </header>
+  <main class="container mx-auto px-4 py-12 md:py-16">
+    <article class="legal-section bg-white rounded-lg shadow-md p-6 md:p-10">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8"><span class="language-content fr-content active">Informations légales</span><span class="language-content en-content">Legal information</span></h1>
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4"><span class="language-content fr-content active">Éditeur et responsable du site</span><span class="language-content en-content">Website publisher and responsible person</span></h2>
+        <div class="space-y-4 text-gray-700">
+          <p class="language-content fr-content active">Vertical Horizons<br>Guillermo Avalos, activité indépendante<br>Ollon, Suisse</p>
+          <p class="language-content en-content">Vertical Horizons<br>Guillermo Avalos, self-employed<br>Ollon, Switzerland</p>
+          <p><a class="underline" href="mailto:contact@verticalhorizons.ch">contact@verticalhorizons.ch</a><br><a class="underline" href="tel:+41764969463">+41 76 496 94 63</a></p>
+        </div>
+      </section>
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4"><span class="language-content fr-content active">Activités</span><span class="language-content en-content">Services</span></h2>
+        <div class="space-y-4 text-gray-700">
+          <p class="language-content fr-content active">Vertical Horizons propose des cours, du coaching, des formations, des sorties et des activités autour de l'escalade et du mouvement. Les informations et prix applicables sont indiqués sur les pages des activités ou communiqués avant la réservation.</p>
+          <p class="language-content en-content">Vertical Horizons offers climbing and movement courses, coaching, training, outings and activities. Applicable information and prices are shown on activity pages or communicated before booking.</p>
+        </div>
+      </section>
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4"><span class="language-content fr-content active">Propriété intellectuelle et liens externes</span><span class="language-content en-content">Intellectual property and external links</span></h2>
+        <div class="space-y-4 text-gray-700">
+          <p class="language-content fr-content active">Sauf indication contraire, les contenus de ce site sont publiés par Vertical Horizons. Toute réutilisation substantielle nécessite l'autorisation préalable du titulaire des droits concernés. Les liens vers des sites tiers sont fournis pour faciliter l'accès à leurs services; Vertical Horizons n'est pas responsable de leurs contenus ou de leurs traitements de données.</p>
+          <p class="language-content en-content">Unless stated otherwise, content on this website is published by Vertical Horizons. Substantial reuse requires prior permission from the relevant rights holder. Links to third-party sites are provided for convenience; Vertical Horizons is not responsible for their content or data processing.</p>
+        </div>
+      </section>
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4"><span class="language-content fr-content active">Documents associés</span><span class="language-content en-content">Related documents</span></h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><a class="underline" href="conditions.html"><span class="language-content fr-content active">Conditions générales</span><span class="language-content en-content">General Terms and Conditions</span></a></li>
+          <li><a class="underline" href="confidentialite.html"><span class="language-content fr-content active">Politique de confidentialité</span><span class="language-content en-content">Privacy Policy</span></a></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+  <footer class="bg-gray-900 text-white py-8 mt-8"><div class="container mx-auto px-4 max-w-4xl flex flex-col sm:flex-row justify-between gap-4"><a href="index.html" class="font-semibold">Vertical Horizons</a><a href="mailto:contact@verticalhorizons.ch" class="text-gray-300 hover:text-white">contact@verticalhorizons.ch</a></div></footer>
+  <script>
+    document.querySelectorAll(".language-btn").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var lang = button.dataset.lang;
+        document.documentElement.lang = lang;
+        document.querySelectorAll(".language-btn").forEach(function (item) {
+          var active = item === button;
+          item.classList.toggle("active", active);
+          item.classList.toggle("bg-white", active);
+          item.classList.toggle("text-[#2F4F4F]", active);
+          item.classList.toggle("shadow-sm", active);
+          item.classList.toggle("text-gray-600", !active);
+          item.setAttribute("aria-pressed", String(active));
+        });
+        document.querySelectorAll(".fr-content").forEach(function (item) { item.classList.toggle("active", lang === "fr"); });
+        document.querySelectorAll(".en-content").forEach(function (item) { item.classList.toggle("active", lang === "en"); });
+      });
+    });
+  </script>
+</body>
+</html>

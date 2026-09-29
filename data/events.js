@@ -68,10 +68,10 @@ window.VERTICAL_HORIZONS_EVENTS = {
       subtitle: "Bases techniques et sécurité en voies multilongs",
       category: "grande-voie",
       eventType: "activity",
-      location: "Secteur Eole, Chablais",
+      location: "Secteur de Saint-Triphon, Chablais",
       duration: "1 journée",
       shortDescription: "Un cours pour acquérir les bases techniques et de sécurité nécessaires pour progresser en voies de plusieurs longueurs.",
-      description: "Une journée de formation consacrée aux bases techniques et aux règles de sécurité pour progresser en voies de plusieurs longueurs. Le cours abordera notamment l'installation de relais, l'assurage depuis le haut, la communication et l'organisation de la progression, ainsi que les techniques de rappel. L'ensemble des bases techniques sera expliqué puis mis en pratique dans une voie du secteur Eole, dans le Chablais.",
+      description: "Une journée de formation consacrée aux bases techniques et aux règles de sécurité pour progresser en voies de plusieurs longueurs. Le cours abordera notamment l'installation de relais, l'assurage depuis le haut, la communication et l'organisation de la progression, ainsi que les techniques de rappel. L'ensemble des bases techniques sera expliqué puis mis en pratique dans une voie du secteur de Saint-Triphon, dans le Chablais.",
       weatherDependent: true,
       safetyNote: "Le secteur, la voie et le contenu peuvent être adaptés en fonction de la météo, des conditions de la roche et du niveau du groupe.",
       status: "upcoming",
@@ -80,7 +80,6 @@ window.VERTICAL_HORIZONS_EVENTS = {
     {
       id: "el-chorro-2026",
       dateOptions: [
-        { start: "2026-10-12", end: "2026-10-16", label: "12–16 octobre 2026" },
         { start: "2026-10-19", end: "2026-10-23", label: "19–23 octobre 2026" }
       ],
       dateStatus: "to-confirm",
@@ -615,7 +614,8 @@ window.VERTICAL_HORIZONS_EVENTS = {
       title: "Multi-pitch climbing course - level 1",
       subtitle: "Technical and safety fundamentals for multi-pitch routes",
       shortDescription: "A course covering the technical and safety fundamentals needed to progress on multi-pitch routes.",
-      description: "A full day focused on the technical fundamentals and safety rules for progressing on multi-pitch routes. The course covers anchor building, belaying from above, communication and rope-team organisation, as well as abseiling techniques. All the key skills are explained and then practised on a route in the Eole sector, in Chablais.",
+      description: "A full day focused on the technical fundamentals and safety rules for progressing on multi-pitch routes. The course covers anchor building, belaying from above, communication and rope-team organisation, as well as abseiling techniques. All the key skills are explained and then practised on a route in the Saint-Triphon sector, in Chablais.",
+      location: "Saint-Triphon sector, Chablais",
       duration: "1 day",
       safetyNote: "The sector, route and content may be adapted to the weather, rock conditions and the group's level."
     },
