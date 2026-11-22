@@ -132,7 +132,7 @@
 
   function eventDateLabel(event) {
     if (event.dateOptions && event.dateOptions.length) return escapeHtml(event.dateOptions.map(function (option) { return option.label; }).join(" ou ") + (event.dateStatus === "to-confirm" ? " - dates à confirmer" : ""));
-    return event.dateLabel ? escapeHtml(event.dateLabel) : escapeHtml(formatDate(event.date));
+    return event.dateLabel ? escapeHtml(isEnglish() ? (event.dateLabelEn || event.dateLabel) : event.dateLabel) : escapeHtml(formatDate(event.date));
   }
 
   function statusLabel(event) {

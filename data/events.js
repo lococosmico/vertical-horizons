@@ -78,13 +78,13 @@ window.VERTICAL_HORIZONS_EVENTS = {
       featured: true
     },
     {
-      id: "el-chorro-2026",
-      dateOptions: [
-        { start: "2026-10-19", end: "2026-10-23", label: "19–23 octobre 2026" }
-      ],
-      dateStatus: "to-confirm",
+      id: "el-chorro-2027",
+      date: "2027-03-29",
+      endDate: "2027-04-02",
+      dateLabel: "29 mars–2 avril 2027",
+      dateLabelEn: "29 March–2 April 2027",
       title: "El Chorro – Climbing & Adventure",
-      subtitle: "Dates à confirmer",
+      subtitle: "5 jours",
       category: "voyage",
       eventType: "voyage",
       location: "El Chorro, Andalousie",
@@ -206,6 +206,46 @@ window.VERTICAL_HORIZONS_EVENTS = {
       shortDescription: "Une journée de progression en petit groupe.",
       description: "Une séance basée sur l'observation, l'analyse et l'expérimentation.",
       weatherDependent: true,
+      status: "upcoming"
+    },
+    {
+      id: "assurage-dynamique-2026-12-01",
+      date: "2026-12-01",
+      title: "Assurage dynamique — séance 1/2",
+      titleEn: "Dynamic belaying — session 1/2",
+      subtitle: "Cours de 2 heures",
+      subtitleEn: "2-hour session",
+      category: "corde",
+      eventType: "activity",
+      location: "Salle d'escalade à Villeneuve, Saxon ou Echandens (à confirmer)",
+      locationEn: "Climbing gym in Villeneuve, Saxon or Echandens (to be confirmed)",
+      startTime: "18:00",
+      endTime: "20:00",
+      shortDescription: "Première séance en salle du cours d'assurage dynamique.",
+      shortDescriptionEn: "First indoor session of the dynamic belaying course.",
+      description: "Première de deux séances de 2 heures en salle consacrées à l'assurage dynamique. Une séance pratique en extérieur à Saint-Triphon sera organisée séparément lorsque la météo le permettra; sa date sera communiquée ultérieurement.",
+      descriptionEn: "First of two 2-hour indoor sessions focused on dynamic belaying. An outdoor practice session at Saint-Triphon will be organised separately when weather permits; its date will be announced later.",
+      price: "CHF 360 / les 2 séances en salle",
+      status: "upcoming"
+    },
+    {
+      id: "assurage-dynamique-2026-12-08",
+      date: "2026-12-08",
+      title: "Assurage dynamique — séance 2/2",
+      titleEn: "Dynamic belaying — session 2/2",
+      subtitle: "Cours de 2 heures",
+      subtitleEn: "2-hour session",
+      category: "corde",
+      eventType: "activity",
+      location: "Salle d'escalade à Villeneuve, Saxon ou Echandens (à confirmer)",
+      locationEn: "Climbing gym in Villeneuve, Saxon or Echandens (to be confirmed)",
+      startTime: "18:00",
+      endTime: "20:00",
+      shortDescription: "Deuxième séance en salle du cours d'assurage dynamique.",
+      shortDescriptionEn: "Second indoor session of the dynamic belaying course.",
+      description: "Deuxième de deux séances de 2 heures en salle consacrées à l'assurage dynamique. Une séance pratique en extérieur à Saint-Triphon sera organisée séparément lorsque la météo le permettra; sa date sera communiquée ultérieurement.",
+      descriptionEn: "Second of two 2-hour indoor sessions focused on dynamic belaying. An outdoor practice session at Saint-Triphon will be organised separately when weather permits; its date will be announced later.",
+      price: "CHF 360 / les 2 séances en salle",
       status: "upcoming"
     },
     {
@@ -563,7 +603,7 @@ window.VERTICAL_HORIZONS_EVENTS = {
   data.events.forEach(function (event) {
     if (event.eventType === "activity" && sundayCopy[event.title]) Object.assign(event, sundayCopy[event.title]);
   });
-  const elChorro = data.events.find(function (event) { return event.id === "el-chorro-2026"; });
+  const elChorro = data.events.find(function (event) { return event.id === "el-chorro-2027"; });
   if (elChorro) {
     elChorro.description = "Un séjour de 5 jours consacré à l'escalade et à la découverte du secteur d'El Chorro. Le programme pourra inclure de l'escalade sportive, une journée consacrée aux manipulations et à la sécurité, une sortie en grande voie avec rappel, ainsi qu'une via ferrata. Selon les conditions, les disponibilités et les envies du groupe, d'autres activités pourront être proposées, par exemple le Caminito del Rey ou une découverte de la région. Le programme restera volontairement flexible afin de profiter au mieux des conditions locales et du niveau du groupe.";
     elChorro.notIncluded = "Vol et transport jusqu'à Málaga, location de voiture, hébergement, repas, location éventuelle de matériel et activités complémentaires.";
@@ -632,7 +672,7 @@ window.VERTICAL_HORIZONS_EVENTS = {
       shortDescription: "A general Hatha Yoga class, particularly beneficial for climbers.",
       description: "A Hatha Yoga class accessible to everyone. The practice develops mobility, flexibility, strength, balance, breathing, concentration, body awareness, recovery and movement control."
     },
-    "El Chorro – Climbing & Adventure": { title: "El Chorro - climbing & adventure", subtitle: "Dates to be confirmed", shortDescription: "Five days of climbing, training and adventure in Andalusia." },
+    "El Chorro – Climbing & Adventure": { title: "El Chorro - climbing & adventure", subtitle: "5 days", shortDescription: "Five days of climbing, training and adventure in Andalusia." },
     "Todra – Morocco Climbing & Adventure": { title: "Todra - Morocco climbing & adventure", subtitle: "6 days", shortDescription: "A climbing and adventure trip in the Todra Gorges and surrounding area." },
     "Costa Blanca – Winter Climbing": { title: "Costa Blanca - winter climbing", subtitle: "Project", shortDescription: "A sunny climbing trip on the Costa Blanca." },
     "Leonidio – Mediterranean Climbing": { title: "Leonidio - Mediterranean climbing", subtitle: "Project", shortDescription: "A climbing and adventure trip to Leonidio, Greece." }
