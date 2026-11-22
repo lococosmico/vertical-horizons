@@ -52,6 +52,36 @@
     .calendar-day { background: rgba(255, 255, 255, 0.96); }
     .calendar-day-muted { background: rgba(231, 228, 220, 0.88); }
     .calendar-month-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+    .calendar-card { height: 100%; overflow: hidden; display: flex; flex-direction: column; border: 1px solid rgba(47, 79, 79, 0.18); border-radius: 1rem; background: rgba(248, 246, 241, 0.97); box-shadow: 0 8px 24px rgba(47, 79, 79, 0.1); }
+    .calendar-card-heading { display: flex; gap: 1rem; padding: 1.25rem; background: linear-gradient(120deg, rgba(47, 79, 79, 0.1), rgba(139, 115, 85, 0.09)); }
+    .calendar-date { flex: 0 0 4.25rem; min-height: 4.25rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.2rem; border-radius: 0.85rem; background: #2F4F4F; color: #fff; text-align: center; }
+    .calendar-date strong { font-size: 1.7rem; line-height: 1; }
+    .calendar-date-weekday, .calendar-date-upcoming span { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    .calendar-date-upcoming { background: #8B7355; }
+    .calendar-card-heading-content { min-width: 0; flex: 1; }
+    .calendar-event-date { margin: 0 0 0.25rem; color: #5d6866; font-size: 0.82rem; font-weight: 600; }
+    .calendar-event-title { margin: 0; color: #2F4F4F; font-size: 1.15rem; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere; }
+    .calendar-event-subtitle { margin: 0.3rem 0 0; color: #58615f; font-size: 0.9rem; }
+    .calendar-trip-label { display: inline-block; margin-top: 0.55rem; color: #765f43; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+    .calendar-card-body { display: flex; flex: 1; flex-direction: column; padding: 1rem 1.25rem 1.25rem; }
+    .calendar-card-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .calendar-meta-item { display: inline-flex; align-items: center; gap: 0.4rem; max-width: 100%; padding: 0.35rem 0.65rem; border: 1px solid rgba(47, 79, 79, 0.1); border-radius: 999px; background: #ece9e1; color: #455451; font-size: 0.78rem; line-height: 1.35; overflow-wrap: anywhere; }
+    .calendar-meta-item i { flex: 0 0 auto; color: #765f43; }
+    .calendar-card-description { margin: 1rem 0; color: #4b5553; font-size: 0.91rem; line-height: 1.6; }
+    .calendar-card-footer { display: flex; flex-direction: column; gap: 0.8rem; margin-top: auto; padding-top: 1rem; }
+    .calendar-card-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; min-height: 1.5rem; }
+    .calendar-card-price { color: #263f3f; font-size: 0.95rem; font-weight: 700; }
+    .calendar-card-availability, .calendar-card-status { color: #4d5b57; font-size: 0.82rem; font-weight: 600; }
+    .calendar-card-availability.is-full, .calendar-card-unavailable { color: #9c3932; }
+    .calendar-card-status.is-project { color: #765018; }
+    .calendar-card-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+    .calendar-card .calendar-detail-btn, .calendar-card .calendar-register-btn, .calendar-card .calendar-interest-btn { display: inline-flex; flex: 1 1 9rem; align-items: center; justify-content: center; min-height: 2.75rem; padding: 0.65rem 0.85rem; border: 1px solid transparent; border-radius: 0.55rem; font-size: 0.86rem; font-weight: 700; line-height: 1.25; text-align: center; transition: background-color .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease; }
+    .calendar-card .calendar-detail-btn { border-color: rgba(47, 79, 79, 0.2); background: #e8e4dc; color: #2F4F4F; }
+    .calendar-card .calendar-detail-btn:hover { background: #dcd5c9; }
+    .calendar-card .calendar-register-btn, .calendar-card .calendar-interest-btn { background: #8B7355; color: #fff; }
+    .calendar-card .calendar-register-btn:hover, .calendar-card .calendar-interest-btn:hover { background: #6f5a45; transform: translateY(-1px); box-shadow: 0 5px 12px rgba(47, 79, 79, .18); }
+    .calendar-card .calendar-detail-btn:focus-visible, .calendar-card .calendar-register-btn:focus-visible, .calendar-card .calendar-interest-btn:focus-visible { outline: 3px solid #2F4F4F; outline-offset: 3px; }
+    .calendar-card-unavailable { display: inline-flex; flex: 1 1 9rem; align-items: center; justify-content: center; font-size: 0.86rem; font-weight: 700; text-align: center; }
     @media (max-width: 640px) {
       .calendar-month-grid { font-size: 0.72rem; }
       .calendar-month-grid .calendar-weekday { padding: 0.55rem 0.15rem; text-align: center; font-size: 0.62rem; }
@@ -59,6 +89,10 @@
       .calendar-month-grid .calendar-day-muted { min-height: 5.5rem; padding: 0.45rem 0.25rem; }
       .calendar-month-grid .calendar-detail-btn { margin-top: 0.35rem; padding: 0.35rem 0.25rem; font-size: 0.64rem; line-height: 1.15; overflow-wrap: anywhere; }
       .calendar-month-grid .calendar-detail-btn span { margin-top: 0.2rem; font-size: 0.58rem; }
+      .calendar-card-heading { gap: 0.75rem; padding: 1rem; }
+      .calendar-card-body { padding: 0.85rem 1rem 1rem; }
+      .calendar-card .calendar-detail-btn, .calendar-card .calendar-register-btn, .calendar-card .calendar-interest-btn { flex-basis: 100%; }
+      .calendar-card-unavailable { flex-basis: 100%; min-height: 2rem; }
       .calendar-month-heading { align-items: stretch; flex-direction: column; }
       .calendar-month-heading h2 { font-size: 1.35rem; }
       .calendar-month-bar { justify-content: space-between; padding: 0.5rem; }
@@ -66,9 +100,6 @@
       .calendar-month-button { min-width: 2.25rem; min-height: 2.25rem; padding: 0.35rem 0.6rem; }
       .calendar-month-button-label { display: inline; font-size: 0.7rem; white-space: nowrap; }
     }
-    .calendar-register-btn, .calendar-interest-btn { background-color: #8B7355 !important; color: #fff !important; opacity: 1 !important; transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease; }
-    .calendar-register-btn:hover, .calendar-interest-btn:hover { background-color: #6f5a45 !important; transform: translateY(-1px); box-shadow: 0 5px 12px rgba(47, 79, 79, .18); }
-    .calendar-register-btn:focus-visible, .calendar-interest-btn:focus-visible { outline: 3px solid #2F4F4F; outline-offset: 3px; }
     .calendar-modal[hidden] { display: none; }
     :focus-visible { outline: 3px solid #8B7355; outline-offset: 3px; }
   </style>

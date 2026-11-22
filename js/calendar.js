@@ -97,7 +97,9 @@
       if (!start || !end || event.status === "hidden") return;
       if (!event.endDate) end.setMonth(end.getMonth() + 6);
       const cursor = new Date(start);
-      while (cursor <= end) {
+      const hasOccurrenceLimit = typeof event.occurrenceCount === "number";
+      let generatedCount = 0;
+      while (cursor <= end && (!hasOccurrenceLimit || generatedCount < event.occurrenceCount)) {
         if (cursor.getDay() === event.recurring.weekday) {
           const date = cursor.getFullYear() + "-" + String(cursor.getMonth() + 1).padStart(2, "0") + "-" + String(cursor.getDate()).padStart(2, "0");
           if (event.skipSchoolBreaks && isSchoolBreak(dateValue(date))) {
@@ -109,6 +111,7 @@
             date: date,
             recurring: true
           }));
+          generatedCount += 1;
         }
         cursor.setDate(cursor.getDate() + 1);
       }
@@ -166,25 +169,29 @@
     const label = isEnglish() ? "View activity" : "Voir l'activité";
     const register = isEnglish() ? "I register" : "Je m'inscris";
     const interest = isEnglish() ? "Show interest" : "Manifester mon intérêt";
-    return '<article class="calendar-card bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100 flex flex-col">' +
-      '<div class="p-5 flex gap-4">' +
-        (event.date ? '<div class="calendar-date bg-primary text-white rounded-xl px-3 py-2 text-center shrink-0"><span class="block text-xs uppercase">' + escapeHtml(formatShortDate(event.date).split(" ")[0]) + '</span><strong class="block text-2xl leading-none mt-1">' + escapeHtml(dateValue(event.date).getDate()) + '</strong></div>' : '<div class="calendar-date bg-secondary text-white rounded-xl px-3 py-2 text-center shrink-0"><span class="block text-xs uppercase">' + (isEnglish() ? "Coming" : "À venir") + '</span></div>') +
-        '<div class="min-w-0 flex-1"><p class="text-sm text-gray-500 mb-1">' + eventDateLabel(event) + '</p><h3 class="text-xl font-semibold text-primary">' + title + '</h3>' + (event.subtitle ? '<p class="text-sm text-gray-600 mt-1">' + eventText(event, "subtitle") + '</p>' : '') + (event.eventType === "voyage" ? '<span class="inline-block mt-2 text-xs font-semibold uppercase tracking-wide text-secondary">' + (isEnglish() ? "Climbing & adventure trip" : "Voyage escalade & aventure") + '</span>' : '') + '</div>' +
+    return '<article class="calendar-card">' +
+      '<div class="calendar-card-heading">' +
+        (event.date ? '<div class="calendar-date"><span class="calendar-date-weekday">' + escapeHtml(formatShortDate(event.date).split(" ")[0]) + '</span><strong>' + escapeHtml(dateValue(event.date).getDate()) + '</strong></div>' : '<div class="calendar-date calendar-date-upcoming"><span>' + (isEnglish() ? "Coming" : "À venir") + '</span></div>') +
+        '<div class="calendar-card-heading-content"><p class="calendar-event-date">' + eventDateLabel(event) + '</p><h3 class="calendar-event-title">' + title + '</h3>' + (event.subtitle ? '<p class="calendar-event-subtitle">' + eventText(event, "subtitle") + '</p>' : '') + (event.eventType === "voyage" ? '<span class="calendar-trip-label">' + (isEnglish() ? "Climbing & adventure trip" : "Voyage escalade & aventure") + '</span>' : '') + '</div>' +
       '</div>' +
       (event.image && !compact ? '<img src="' + escapeHtml(event.image) + '" alt="' + title + '" class="w-full h-48 object-cover" loading="lazy" decoding="async">' : '') +
-      '<div class="px-5 pb-5 flex flex-col flex-1">' +
-        '<div class="flex flex-wrap gap-3 text-sm text-gray-600 mb-4">' +
-          '<span><i class="ri-price-tag-3-line mr-1" aria-hidden="true"></i>' + categoryLabel(event.category) + '</span>' +
-          (event.location ? '<span><i class="ri-map-pin-line mr-1" aria-hidden="true"></i>' + eventText(event, "location") + '</span>' : '') +
-          (event.startTime ? '<span><i class="ri-time-line mr-1" aria-hidden="true"></i>' + escapeHtml(event.startTime) + (event.endTime ? '–' + escapeHtml(event.endTime) : '') + '</span>' : '') +
+      '<div class="calendar-card-body">' +
+        '<div class="calendar-card-meta">' +
+          '<span class="calendar-meta-item"><i class="ri-price-tag-3-line" aria-hidden="true"></i>' + categoryLabel(event.category) + '</span>' +
+          (event.location ? '<span class="calendar-meta-item"><i class="ri-map-pin-line" aria-hidden="true"></i>' + eventText(event, "location") + '</span>' : '') +
+          (event.startTime ? '<span class="calendar-meta-item"><i class="ri-time-line" aria-hidden="true"></i>' + escapeHtml(event.startTime) + (event.endTime ? '–' + escapeHtml(event.endTime) : '') + '</span>' : '') +
         '</div>' +
-        (!compact && event.shortDescription ? '<p class="text-gray-600 mb-4">' + eventText(event, "shortDescription") + '</p>' : '') +
-        '<div class="mt-auto flex flex-wrap items-center gap-3">' +
-          (price(event) ? '<span class="font-semibold text-gray-900">' + price(event) + '</span>' : '') +
-          (availability(event) ? '<span class="text-sm ' + (full ? 'text-red-700' : 'text-gray-600') + '">' + escapeHtml(availability(event)) + '</span>' : '') +
-          '<button type="button" class="calendar-detail-btn ml-auto text-primary font-medium hover:text-secondary" data-event-id="' + escapeHtml(event.id) + '">' + label + '</button>' +
-          (statusLabel(event) ? '<span class="text-sm ' + (project ? 'text-amber-700' : 'text-gray-600') + '">' + escapeHtml(statusLabel(event)) + '</span>' : '') +
-          (cancelled || full ? '<span class="text-sm font-medium text-red-700">' + (cancelled ? (isEnglish() ? "Cancelled" : "Annulé") : (isEnglish() ? "Waiting list" : "Liste d'attente")) + '</span>' : project ? '<button type="button" class="calendar-interest-btn bg-secondary text-white px-4 py-2 rounded-button font-medium hover:bg-amber-600" data-event-id="' + escapeHtml(event.id) + '">' + interest + '</button>' : '<button type="button" class="calendar-register-btn bg-secondary text-white px-4 py-2 rounded-button font-medium hover:bg-amber-600" data-event-id="' + escapeHtml(event.id) + '">' + register + '</button>') +
+        (!compact && event.shortDescription ? '<p class="calendar-card-description">' + eventText(event, "shortDescription") + '</p>' : '') +
+        '<div class="calendar-card-footer">' +
+          '<div class="calendar-card-summary">' +
+            (price(event) ? '<span class="calendar-card-price">' + price(event) + '</span>' : '') +
+            (availability(event) ? '<span class="calendar-card-availability ' + (full ? 'is-full' : '') + '">' + escapeHtml(availability(event)) + '</span>' : '') +
+            (statusLabel(event) ? '<span class="calendar-card-status ' + (project ? 'is-project' : '') + '">' + escapeHtml(statusLabel(event)) + '</span>' : '') +
+          '</div>' +
+          '<div class="calendar-card-actions">' +
+            '<button type="button" class="calendar-detail-btn" data-event-id="' + escapeHtml(event.id) + '">' + label + '</button>' +
+            (cancelled || full ? '<span class="calendar-card-unavailable">' + (cancelled ? (isEnglish() ? "Cancelled" : "Annulé") : (isEnglish() ? "Waiting list" : "Liste d'attente")) + '</span>' : project ? '<button type="button" class="calendar-interest-btn" data-event-id="' + escapeHtml(event.id) + '">' + interest + '</button>' : '<button type="button" class="calendar-register-btn" data-event-id="' + escapeHtml(event.id) + '">' + register + '</button>') +
+          '</div>' +
         '</div>' +
       '</div>' +
     '</article>';

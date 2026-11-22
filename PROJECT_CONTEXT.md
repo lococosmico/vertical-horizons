@@ -30,7 +30,8 @@
 - Categorías disponibles: `escalade`, `corde`, `entrainement`, `yoga`, `grande-voie`, `voyage`, `groupes`, además de categorías usadas por el sitio.
 - Estados disponibles: `upcoming`, `project`, `full`, `cancelled`, `completed`, `hidden`.
 - Los domingos pueden añadirse individualmente para respetar vacaciones, viajes, meteorología y cambios.
-- Los recurrentes usan `recurring.weekday`: martes `2`, jueves `4`, domingo `0`.
+- Los recurrentes usan `recurring.weekday`: martes `2`, jueves `4`, viernes `5`, domingo `0`.
+- `occurrenceCount` limita una serie a un bloque de sesiones, contando solo las fechas fuera de los periodos escolares excluidos.
 - Sin `endDate`, el sistema genera seis meses a partir de la fecha actual.
 - Las vacaciones deben declararse en `schoolBreaks` y pueden omitirse con `skipSchoolBreaks: true`.
 
@@ -38,7 +39,7 @@
 
 - Ciclo de domingos publicado entre septiembre y diciembre de 2026.
 - Recurrentes:
-  - Entrenamiento escalada los martes desde el 1 de septiembre de 2026.
+  - Seguimiento de entrenamiento personalizado los viernes, bloque de 9 sesiones desde el 15 de enero de 2027 hasta el 19 de marzo, de 17:00 a 19:00, CHF 450; sala y/o exterior según el tiempo y el grupo, sin sesiones durante las vacaciones escolares vaudoises.
   - Hatha Yoga en Ollon los jueves desde el 3 de septiembre de 2026.
 - Vacaciones bloqueadas: otoño 2026, Navidad 2026-2027, relache 2027 y Pascua 2027.
 - Viajes visibles:
@@ -46,15 +47,15 @@
   - Todra, 4-9 enero de 2027, confirmado como próxima oferta.
   - Costa Blanca, febrero de 2027, proyecto.
   - Leonidio, Pascua de 2027, proyecto.
-- Assurage dynamique: CHF 360 para las dos sesiones indoor, el 1 y el 8 de diciembre de 2026 de 18:00 a 20:00; sala por confirmar entre Villeneuve, Saxon y Echandens. La sesión exterior en Saint-Triphon se planificará aparte según la meteorología.
+- Assurage dynamique: dos sesiones indoor de 2 horas, 1 y 8 de diciembre de 2026 de 18:00 a 20:00; CHF 70 por sesión o CHF 120 ambas. La primera cubre fundamentos y timing, la segunda práctica avanzada de caídas y requiere buen nivel de aseguramiento. Se puede ofrecer una actividad exterior de aplicación en una fecha futura, aparte.
 - Team Building Indoor se retiró del listado; la oferta restante se presenta como experiencia a medida sin especificar lugares o formatos.
 
 ## Pendientes conocidos
 
 - Configurar un proveedor real para el formulario newsletter.
 - Completar precios y costes adicionales de los viajes.
-- Confirmar la sala para las sesiones indoor de aseguramiento dinámico.
-- Planificar la sesión exterior de aseguramiento dinámico cuando la meteorología sea favorable.
+- Comunicar por WhatsApp a los participantes las salas para las sesiones indoor de aseguramiento dinámico.
+- Comunicar a los clientes el nuevo bloque de seguimiento de entrenamiento por la lista de difusión de WhatsApp (la comunicación no se envía desde el sitio).
 - Confirmar Costa Blanca y Leonidio.
 - No se deben recoger suscripciones newsletter hasta que el proveedor esté configurado.
 

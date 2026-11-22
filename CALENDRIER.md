@@ -38,7 +38,7 @@ Les champs `priceLabel`, `notIncluded` et `estimatedAdditionalCosts` permettent 
 
 ## Activites recurrentes
 
-Les programmes recurrents sont dans `recurringTemplates`. Pour en ajouter ou en modifier un, renseigner `startDate`, les horaires, le lieu, le prix si necessaire et `recurring.weekday`: `0` dimanche, `2` mardi ou `4` jeudi. Sans `endDate`, le site genere automatiquement les six prochains mois. Pour arreter une serie, mettre `status: "hidden"`.
+Les programmes recurrents sont dans `recurringTemplates`. Pour en ajouter ou en modifier un, renseigner `startDate`, les horaires, le lieu, le prix si necessaire et `recurring.weekday`: `0` dimanche, `2` mardi, `4` jeudi ou `5` vendredi. Sans `endDate`, le site genere automatiquement les six prochains mois. Le champ facultatif `occurrenceCount` limite le nombre de seances generees; les dates de vacances sont ignorees avant de compter une seance. Pour arreter une serie, mettre `status: "hidden"`.
 
 ## Meteo et securite
 

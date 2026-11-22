@@ -3,7 +3,8 @@
  *
  * Keep one-off Sunday activities as individual events so school holidays,
  * trips, weather and programme changes can be managed without exceptions in
- * the calendar code. Tuesday and Thursday programmes remain recurring.
+ * the calendar code. Recurring programmes can be capped to a fixed number of
+ * sessions and skip school breaks.
  */
 window.VERTICAL_HORIZONS_EVENTS = {
   schoolBreaks: [
@@ -211,41 +212,41 @@ window.VERTICAL_HORIZONS_EVENTS = {
     {
       id: "assurage-dynamique-2026-12-01",
       date: "2026-12-01",
-      title: "Assurage dynamique — séance 1/2",
-      titleEn: "Dynamic belaying — session 1/2",
+      title: "Assurage dynamique — fondamentaux",
+      titleEn: "Dynamic belaying — fundamentals",
       subtitle: "Cours de 2 heures",
       subtitleEn: "2-hour session",
       category: "corde",
       eventType: "activity",
-      location: "Salle d'escalade à Villeneuve, Saxon ou Echandens (à confirmer)",
-      locationEn: "Climbing gym in Villeneuve, Saxon or Echandens (to be confirmed)",
+      location: "Indoor",
+      locationEn: "Indoor",
       startTime: "18:00",
       endTime: "20:00",
-      shortDescription: "Première séance en salle du cours d'assurage dynamique.",
-      shortDescriptionEn: "First indoor session of the dynamic belaying course.",
-      description: "Première de deux séances de 2 heures en salle consacrées à l'assurage dynamique. Une séance pratique en extérieur à Saint-Triphon sera organisée séparément lorsque la météo le permettra; sa date sera communiquée ultérieurement.",
-      descriptionEn: "First of two 2-hour indoor sessions focused on dynamic belaying. An outdoor practice session at Saint-Triphon will be organised separately when weather permits; its date will be announced later.",
-      price: "CHF 360 / les 2 séances en salle",
+      shortDescription: "Pour les personnes qui savent déjà assurer et souhaitent mieux comprendre le dynamisme et le timing.",
+      shortDescriptionEn: "For belayers who want to better understand dynamic belaying and timing.",
+      description: "Séance en salle pour poser les bases théoriques de l'assurage dynamique et répéter les gestes dans un cadre contrôlé. Nous travaillerons notamment le timing, le positionnement, la gestion de la corde et l'accompagnement du mouvement. Prérequis: savoir déjà assurer. Inscription possible à cette séance seule ou aux deux séances. Une activité de mise en pratique en extérieur pourra être proposée ultérieurement, séparément.",
+      descriptionEn: "An indoor session covering the theory of dynamic belaying and practising the movements in a controlled setting. We will work on timing, positioning, rope management and following the climber's movement. Prerequisite: prior belaying experience. You can register for this session alone or for both sessions. An outdoor application session may be offered separately at a later date.",
+      price: "CHF 70 / séance · CHF 120 les 2",
       status: "upcoming"
     },
     {
       id: "assurage-dynamique-2026-12-08",
       date: "2026-12-08",
-      title: "Assurage dynamique — séance 2/2",
-      titleEn: "Dynamic belaying — session 2/2",
+      title: "Assurage dynamique — pratique avancée",
+      titleEn: "Dynamic belaying — advanced practice",
       subtitle: "Cours de 2 heures",
       subtitleEn: "2-hour session",
       category: "corde",
       eventType: "activity",
-      location: "Salle d'escalade à Villeneuve, Saxon ou Echandens (à confirmer)",
-      locationEn: "Climbing gym in Villeneuve, Saxon or Echandens (to be confirmed)",
+      location: "Indoor",
+      locationEn: "Indoor",
       startTime: "18:00",
       endTime: "20:00",
-      shortDescription: "Deuxième séance en salle du cours d'assurage dynamique.",
-      shortDescriptionEn: "Second indoor session of the dynamic belaying course.",
-      description: "Deuxième de deux séances de 2 heures en salle consacrées à l'assurage dynamique. Une séance pratique en extérieur à Saint-Triphon sera organisée séparément lorsque la météo le permettra; sa date sera communiquée ultérieurement.",
-      descriptionEn: "Second of two 2-hour indoor sessions focused on dynamic belaying. An outdoor practice session at Saint-Triphon will be organised separately when weather permits; its date will be announced later.",
-      price: "CHF 360 / les 2 séances en salle",
+      shortDescription: "Mise en pratique avancée de l'assurage dynamique et des chutes, avec un bon niveau d'assurage requis.",
+      shortDescriptionEn: "Advanced practice of dynamic belaying and falls; a good level of belaying is required.",
+      description: "Séance avancée en salle pour mettre en pratique l'assurage dynamique dans différentes situations, en faisant varier les surfaces, les hauteurs et les scénarios de chute. Un bon niveau d'assurage est requis. Inscription possible à cette séance seule ou aux deux séances. Une activité de mise en pratique en extérieur pourra être proposée ultérieurement, séparément.",
+      descriptionEn: "An advanced indoor session applying dynamic belaying in varied situations, with different surfaces, heights and fall scenarios. A good level of belaying is required. You can register for this session alone or for both sessions. An outdoor application session may be offered separately at a later date.",
+      price: "CHF 70 / séance · CHF 120 les 2",
       status: "upcoming"
     },
     {
@@ -537,19 +538,24 @@ window.VERTICAL_HORIZONS_EVENTS = {
   ],
   recurringTemplates: [
     {
-      id: "entrainement-escalade-mardi",
-      startDate: "2026-09-01",
-      title: "Coaching / entraînement escalade",
-      subtitle: "Groupe de progression suivi",
+      id: "suivi-entrainement-personnalise-vendredi-2027",
+      startDate: "2027-01-15",
+      endDate: "2027-03-19",
+      occurrenceCount: 9,
+      title: "Suivi d'entraînement personnalisé",
+      subtitle: "Bloc de 9 séances",
       category: "entrainement",
       eventType: "activity",
       startTime: "17:00",
       endTime: "19:00",
-      location: "Villeneuve - voie / bloc indoor ou Monthey - bloc indoor",
-      shortDescription: "Un entraînement suivi structuré autour d'un cycle de progression.",
-      description: "Une séance d'entraînement en groupe structurée autour d'un cycle de progression: force, puissance, endurance, résistance, technique, mobilité, préparation physique, travail spécifique bloc ou voie, prévention et stratégie d'entraînement. Des tarifs préférentiels sont proposés pour les personnes souhaitant suivre le programme sur un trimestre ou une année. Conditions et tarifs sur demande.",
-      price: "CHF 40 / 2 heures",
-      recurring: { frequency: "weekly", weekday: 2 },
+      price: "CHF 450 / 9 séances",
+      location: "Lieu adapté aux conditions météorologiques et au groupe",
+      locationEn: "Location adapted to weather conditions and the group",
+      shortDescription: "Un accompagnement personnalisé pour structurer et suivre votre entraînement sur 9 séances.",
+      shortDescriptionEn: "Personalised coaching to structure and follow your training over 9 sessions.",
+      description: "Un bloc de 9 séances de suivi d'entraînement personnalisé, chaque vendredi de 17h à 19h à partir du 15 janvier 2027. Le suivi peut se dérouler en salle et/ou en extérieur, selon les conditions météorologiques et les besoins du groupe. Les séances ne sont pas programmées pendant les vacances scolaires vaudoises.",
+      descriptionEn: "A 9-session block of personalised training coaching, every Friday from 5 to 7 pm, starting 15 January 2027. Sessions may take place indoors and/or outdoors, depending on weather conditions and the group's needs. No sessions are scheduled during Vaud school holidays.",
+      recurring: { frequency: "weekly", weekday: 5 },
       skipSchoolBreaks: true,
       status: "upcoming",
       featured: true
@@ -659,12 +665,9 @@ window.VERTICAL_HORIZONS_EVENTS = {
       duration: "1 day",
       safetyNote: "The sector, route and content may be adapted to the weather, rock conditions and the group's level."
     },
-    "Coaching / entraînement escalade": {
-      title: "Climbing coaching / training",
-      subtitle: "Structured progression group",
-      shortDescription: "Structured group training built around a progression cycle.",
-      description: "A structured group training session built around a progression cycle: strength, power, endurance, resistance, technique, mobility, physical preparation, specific bouldering or route work, injury prevention and training strategy.",
-      location: "Villeneuve - indoor route / bouldering or Monthey - indoor bouldering"
+    "Suivi d'entraînement personnalisé": {
+      title: "Personalised training coaching",
+      subtitle: "9-session block"
     },
     "Hatha Yoga - Ollon": {
       title: "Hatha Yoga - Ollon",
