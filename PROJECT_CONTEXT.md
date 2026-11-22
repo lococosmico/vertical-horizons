@@ -10,7 +10,8 @@
 ## Comparación con el sitio publicado
 
 - Verificado el 22 de noviembre de 2026 que `index.html`, `calendrier/index.html`, `data/events.js` y `js/calendar.js` coincidían con las versiones servidas por `verticalhorizons.ch`.
-- Los cambios de esta conversación están aplicados localmente y aún deben publicarse para reflejarse en el sitio.
+- Los cambios del calendario, la ficha de aseguramiento dinámico, la página de inicio y el estilo de las tarjetas están en `main`, commit `f9ea624` (`22 COP`), sincronizado con `origin/main` el 23 de noviembre de 2026.
+- La versión publicada del sitio no se ha vuelto a comprobar después de ese commit; confirmar que GitHub Pages haya terminado de desplegarlo.
 
 ## Arquitectura
 
@@ -47,14 +48,15 @@
   - Todra, 4-9 enero de 2027, confirmado como próxima oferta.
   - Costa Blanca, febrero de 2027, proyecto.
   - Leonidio, Pascua de 2027, proyecto.
-- Assurage dynamique: dos sesiones indoor de 2 horas, 1 y 8 de diciembre de 2026 de 18:00 a 20:00; CHF 70 por sesión o CHF 120 ambas. La primera cubre fundamentos y timing, la segunda práctica avanzada de caídas y requiere buen nivel de aseguramiento. Se puede ofrecer una actividad exterior de aplicación en una fecha futura, aparte.
+- Assurage dynamique y práctica de caídas: dos sesiones indoor de 2 horas, 1 y 8 de diciembre de 2026 de 18:00 a 20:00; CHF 70 por sesión o CHF 120 ambas. La primera cubre fundamentos y timing, la segunda práctica avanzada variando superficies y alturas y requiere buen nivel de aseguramiento. Una actividad exterior de aplicación podrá ofrecerse en el futuro, aparte.
 - Team Building Indoor se retiró del listado; la oferta restante se presenta como experiencia a medida sin especificar lugares o formatos.
 
 ## Pendientes conocidos
 
 - Configurar un proveedor real para el formulario newsletter.
 - Completar precios y costes adicionales de los viajes.
-- Comunicar por WhatsApp a los participantes las salas para las sesiones indoor de aseguramiento dinámico.
+- Comprobar que GitHub Pages haya desplegado el commit `f9ea624` y revisar el sitio publicado.
+- Comunicar por WhatsApp a los participantes las salas para las sesiones indoor de aseguramiento dinámico; esos nombres no se publican en el sitio.
 - Comunicar a los clientes el nuevo bloque de seguimiento de entrenamiento por la lista de difusión de WhatsApp (la comunicación no se envía desde el sitio).
 - Confirmar Costa Blanca y Leonidio.
 - No se deben recoger suscripciones newsletter hasta que el proveedor esté configurado.
