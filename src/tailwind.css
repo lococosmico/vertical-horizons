@@ -1,3 +1,57 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media (max-width: 420px) {
+  header > .container {
+    gap: 0.5rem;
+  }
+
+  header > .container > a {
+    min-width: 0;
+    gap: 0.5rem;
+  }
+
+  header > .container > a > img {
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+  }
+
+  header > .container > a > span {
+    max-width: 6.25rem;
+    font-size: 1.125rem;
+    line-height: 1.1;
+  }
+
+  header > .container > div {
+    flex-shrink: 0;
+    gap: 0.5rem;
+  }
+
+  header .language-btn {
+    gap: 0.25rem;
+    padding: 0.375rem 0.5rem;
+  }
+
+  header .language-btn > span[class^="ri-"] {
+    display: none;
+  }
+
+  header #mobileMenuButton {
+    width: 2.25rem;
+    height: 2.25rem;
+    flex: 0 0 2.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  header > .container > a > span {
+    max-width: 6.25rem;
+    font-size: 1rem;
+  }
+
+  header .language-btn {
+    padding: 0.25rem 0.375rem;
+  }
+}

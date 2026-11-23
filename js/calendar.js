@@ -25,6 +25,17 @@
     groupes: "ri-group-line"
   };
   const categoryOrder = ["escalade", "corde", "entrainement", "yoga", "grande-voie", "voyage", "formation", "aventure", "groupes"];
+  const commonEnglishText = {
+    location: {
+      "Lieu adapté aux conditions": "Location selected according to conditions",
+      "Lieu adapté aux conditions météorologiques et au groupe": "Location selected according to weather conditions and group needs",
+      "Secteur adapté aux conditions": "Area selected according to conditions",
+      "Secteur du Chablais": "Chablais area",
+      "Secteur de Saint-Triphon, Chablais": "Saint-Triphon area, Chablais",
+      "El Chorro, Andalousie": "El Chorro, Andalusia",
+      "Gorges du Todra, Maroc": "Todra Gorge, Morocco"
+    }
+  };
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   let currentMonth = new Date(today.getFullYear(), today.getMonth(), 1);
@@ -76,7 +87,8 @@
 
   function eventText(event, field) {
     const englishField = field + "En";
-    return escapeHtml(isEnglish() ? (event[englishField] || event[field]) : event[field]);
+    const translatedValue = commonEnglishText[field] && commonEnglishText[field][event[field]];
+    return escapeHtml(isEnglish() ? (event[englishField] || translatedValue || event[field]) : event[field]);
   }
 
   function isSchoolBreak(date) {
@@ -134,7 +146,7 @@
   }
 
   function eventDateLabel(event) {
-    if (event.dateOptions && event.dateOptions.length) return escapeHtml(event.dateOptions.map(function (option) { return option.label; }).join(" ou ") + (event.dateStatus === "to-confirm" ? " - dates à confirmer" : ""));
+    if (event.dateOptions && event.dateOptions.length) return escapeHtml(event.dateOptions.map(function (option) { return option.label; }).join(isEnglish() ? " or " : " ou ") + (event.dateStatus === "to-confirm" ? (isEnglish() ? " - dates to be confirmed" : " - dates à confirmer") : ""));
     return event.dateLabel ? escapeHtml(isEnglish() ? (event.dateLabelEn || event.dateLabel) : event.dateLabel) : escapeHtml(formatDate(event.date));
   }
 
@@ -160,7 +172,7 @@
 
   function price(event) {
     if (!event.price) return "";
-    return escapeHtml(event.price);
+    return escapeHtml(isEnglish() ? (event.priceEn || event.price) : event.price);
   }
 
   function eventCard(event, compact) {
@@ -279,8 +291,8 @@
     if (!event || !modal) return;
     const full = event.status === "full" || event.placesAvailable === 0;
     modal.querySelector("[data-event-modal-content]").innerHTML = '<div class="flex justify-between gap-4 mb-5"><div><p class="text-sm text-gray-500">' + eventDateLabel(event) + (event.startTime ? ' · ' + escapeHtml(event.startTime) + (event.endTime ? '–' + escapeHtml(event.endTime) : '') : '') + '</p><h2 id="eventModalTitle" class="text-2xl font-bold text-primary mt-1">' + eventTitle(event) + '</h2></div><button type="button" data-close-modal class="text-gray-500 hover:text-primary text-2xl" aria-label="' + (isEnglish() ? "Close" : "Fermer") + '">&times;</button></div>' +
-      '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm mb-5">' + (event.location ? '<p><strong>' + (isEnglish() ? "Location" : "Lieu") + ':</strong> ' + eventText(event, "location") + '</p>' : '') + (event.level ? '<p><strong>' + (isEnglish() ? "Level" : "Niveau") + ':</strong> ' + escapeHtml(event.level) + '</p>' : '') + (event.duration ? '<p><strong>' + (isEnglish() ? "Duration" : "Durée") + ':</strong> ' + eventText(event, "duration") + '</p>' : '') + (price(event) ? '<p><strong>' + (event.priceLabel ? escapeHtml(event.priceLabel) : (isEnglish() ? "Price" : "Prix")) + ':</strong> ' + price(event) + '</p>' : '') + '</div>' +
-      '<p class="text-gray-700 mb-5">' + eventDescription(event) + '</p>' + (event.includedNote ? '<p class="text-sm text-gray-600 mb-3"><strong>' + (isEnglish() ? "Included note" : "À noter") + ':</strong> ' + escapeHtml(event.includedNote) + '</p>' : '') + (event.notIncluded ? '<p class="text-sm text-gray-600 mb-5"><strong>' + (isEnglish() ? "Not included" : "À prévoir en plus") + ':</strong> ' + escapeHtml(event.notIncluded) + '</p>' : '') + '<p class="text-sm font-medium ' + (full ? 'text-red-700' : 'text-gray-600') + '">' + escapeHtml(availability(event)) + '</p>' +
+      '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm mb-5">' + (event.location ? '<p><strong>' + (isEnglish() ? "Location" : "Lieu") + ':</strong> ' + eventText(event, "location") + '</p>' : '') + (event.level ? '<p><strong>' + (isEnglish() ? "Level" : "Niveau") + ':</strong> ' + escapeHtml(event.level) + '</p>' : '') + (event.duration ? '<p><strong>' + (isEnglish() ? "Duration" : "Durée") + ':</strong> ' + eventText(event, "duration") + '</p>' : '') + (price(event) ? '<p><strong>' + (isEnglish() ? (event.priceLabelEn || event.priceLabel || "Price") : (event.priceLabel || "Prix")) + ':</strong> ' + price(event) + '</p>' : '') + '</div>' +
+      '<p class="text-gray-700 mb-5">' + eventDescription(event) + '</p>' + (event.includedNote ? '<p class="text-sm text-gray-600 mb-3"><strong>' + (isEnglish() ? "Included note" : "À noter") + ':</strong> ' + eventText(event, "includedNote") + '</p>' : '') + (event.notIncluded ? '<p class="text-sm text-gray-600 mb-5"><strong>' + (isEnglish() ? "Not included" : "À prévoir en plus") + ':</strong> ' + eventText(event, "notIncluded") + '</p>' : '') + '<p class="text-sm font-medium ' + (full ? 'text-red-700' : 'text-gray-600') + '">' + escapeHtml(availability(event)) + '</p>' +
       (event.status === "project" && event.interestForm ? interestForm(event) : (!full && event.status !== "cancelled" && event.status !== "project" && event.status !== "completed" ? '<form id="eventRegistrationForm" action="https://formspree.io/f/mvganway" method="POST" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6"><input type="hidden" name="activite" value="' + escapeHtml(event.title) + '"><input type="hidden" name="date" value="' + escapeHtml(event.date || event.dateLabel) + '"><label class="text-sm">' + (isEnglish() ? "First name" : "Prénom") + '<input required name="prenom" type="text" class="mt-1 w-full px-3 py-2 border rounded-lg" autocomplete="given-name"></label><label class="text-sm">' + (isEnglish() ? "Last name" : "Nom") + '<input required name="nom" type="text" class="mt-1 w-full px-3 py-2 border rounded-lg" autocomplete="family-name"></label><label class="text-sm sm:col-span-2">Email<input required name="email" type="email" class="mt-1 w-full px-3 py-2 border rounded-lg" autocomplete="email"></label><label class="text-sm">' + (isEnglish() ? "Phone (optional)" : "Téléphone (facultatif)") + '<input name="telephone" type="tel" class="mt-1 w-full px-3 py-2 border rounded-lg" autocomplete="tel"></label><label class="text-sm">' + (isEnglish() ? "Participants" : "Participants") + '<input required min="1" name="participants" type="number" class="mt-1 w-full px-3 py-2 border rounded-lg"></label><label class="text-sm sm:col-span-2">' + (isEnglish() ? "Level / experience" : "Niveau / expérience") + '<input name="niveau" type="text" class="mt-1 w-full px-3 py-2 border rounded-lg"></label><label class="text-sm sm:col-span-2">' + (isEnglish() ? "Message" : "Message") + '<textarea name="message" rows="3" class="mt-1 w-full px-3 py-2 border rounded-lg"></textarea></label><button type="submit" class="sm:col-span-2 bg-primary text-white px-5 py-3 rounded-button font-medium hover:bg-blue-700">' + (isEnglish() ? "I register" : "Je m'inscris") + '</button></form>' : "")) +
       '<div class="flex flex-wrap gap-3 mt-6">' + (event.status !== "completed" ? '<a class="text-primary underline" href="mailto:contact@verticalhorizons.ch?subject=' + encodeURIComponent(event.title) + '&body=' + encodeURIComponent((isEnglish() ? "Hello Guillermo, I would like to register for " : "Bonjour Guillermo, je souhaite m'inscrire à ") + event.title + " le " + (event.date || event.dateLabel) + ".") + '">' + (event.status === "project" ? (isEnglish() ? "Show interest by email" : "Manifester mon intérêt par email") : (isEnglish() ? "Register by email" : "S'inscrire par email")) + '</a>' : "") + (window.VERTICAL_HORIZONS_WHATSAPP && event.status !== "project" && event.status !== "completed" ? '<a class="text-primary underline" target="_blank" rel="noopener noreferrer" href="https://wa.me/' + window.VERTICAL_HORIZONS_WHATSAPP + '?text=' + encodeURIComponent((isEnglish() ? "Hello Guillermo, I would like to register for " : "Bonjour Guillermo, je souhaiterais m'inscrire à ") + event.title + " le " + (event.date || event.dateLabel) + ".") + '">WhatsApp</a>' : "") + (event.date && event.status !== "completed" ? '<button type="button" class="text-primary underline" data-google-calendar="' + escapeHtml(event.id) + '">' + (isEnglish() ? "Add to Google Calendar" : "Ajouter à Google Calendar") + '</button><button type="button" class="text-primary underline" data-ics-calendar="' + escapeHtml(event.id) + '">' + (isEnglish() ? "Add to my calendar" : "Ajouter à mon calendrier") + '</button>' : '') + '</div>';
     modal.hidden = false;
@@ -318,8 +330,10 @@
     setupFilters(upcoming, filters, list);
     renderList(upcoming, list, "all");
     renderMonth(upcoming, "all");
-    document.querySelector("[data-calendar-prev]")?.addEventListener("click", function () { currentMonth.setMonth(currentMonth.getMonth() - 1); renderMonth(upcoming, "all"); });
-    document.querySelector("[data-calendar-next]")?.addEventListener("click", function () { currentMonth.setMonth(currentMonth.getMonth() + 1); renderMonth(upcoming, "all"); });
+    const previousMonthButton = document.querySelector("[data-calendar-prev]");
+    if (previousMonthButton) previousMonthButton.onclick = function () { currentMonth.setMonth(currentMonth.getMonth() - 1); renderMonth(upcoming, "all"); };
+    const nextMonthButton = document.querySelector("[data-calendar-next]");
+    if (nextMonthButton) nextMonthButton.onclick = function () { currentMonth.setMonth(currentMonth.getMonth() + 1); renderMonth(upcoming, "all"); };
     const past = document.querySelector("[data-calendar-past]");
     if (past) { const pastEvents = events.filter(function (event) { return (event.date && dateValue(event.date) < today) || event.status === "completed"; }); past.innerHTML = pastEvents.length ? pastEvents.map(function (event) { return eventCard(event.status === "cancelled" ? event : Object.assign({}, event, { status: "completed" }), true); }).join("") : '<p class="text-gray-600">' + (isEnglish() ? "No past activities are listed." : "Aucune activité passée n'est listée.") + '</p>'; }
   }

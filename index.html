@@ -193,7 +193,7 @@
               <span class="ri-flag-line"></span>EN
             </button>
           </div>
-          <nav class="hidden md:flex items-center space-x-6">
+          <nav class="hidden lg:flex items-center space-x-6">
             <a
               href="a-propos.html"
               class="text-gray-700 hover:text-primary transition-colors"
@@ -217,7 +217,7 @@
             >
           </nav>
           <button
-            class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700"
+            class="lg:hidden w-10 h-10 flex items-center justify-center text-gray-700"
             id="mobileMenuButton"
             type="button"
             aria-label="Ouvrir le menu"
@@ -230,7 +230,7 @@
       </div>
       <!-- Mobile Menu -->
       <div
-        class="md:hidden hidden bg-white w-full absolute top-full left-0 shadow-md"
+        class="lg:hidden hidden bg-white w-full absolute top-full left-0 shadow-md"
         id="mobileMenu"
       >
         <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
@@ -258,6 +258,7 @@
         </div>
       </div>
     </header>
+    <main>
     <!-- Reemplazar la sección Hero Section actual por esta versión: -->
     <section class="hero-section min-h-[600px] flex items-center">
       <div class="container mx-auto px-4 py-16 w-full">
@@ -280,9 +281,9 @@
             </p>
           </div>
           <div class="mb-8 language-content en-content hidden">
-            <p class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Climbing courses and coaching in French-speaking Switzerland
-            </p>
+            </h1>
             <p class="text-lg md:text-xl text-gray-700 mb-8">
               At Vertical Horizons, everyone is guided on their personal journey with care, respect and kindness.
             </p>
@@ -900,9 +901,9 @@
                   >
                     <i class="ri-mail-line ri-lg"></i>
                   </div>
-                  <div>
+                  <div class="min-w-0">
                     <h4 class="font-medium text-gray-900 mb-1">Email</h4>
-                    <p class="text-gray-700">contact@verticalhorizons.ch</p>
+                    <p class="text-gray-700 break-words">contact@verticalhorizons.ch</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-4">
@@ -940,7 +941,7 @@
                   </div>
                   <div>
                     <h4 class="font-medium text-gray-900 mb-1">Instagram</h4>
-                    <p class="text-gray-700">@verticalhorizons_ch</p>
+                    <p class="text-gray-700">@verticalhorizons.ch</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-4">
@@ -974,6 +975,7 @@
         </div>
       </div>
     </section>
+    </main>
     <script>
       document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -1080,7 +1082,8 @@
             <ul class="space-y-2 text-gray-400">
               <li class="flex items-center gap-2">
                 <i class="ri-map-pin-line"></i>
-                Ollon, Suisse
+                <span class="language-content fr-content">Ollon, Suisse</span>
+                <span class="language-content en-content hidden">Ollon, Switzerland</span>
               </li>
               <li class="flex items-center gap-2">
                 <a href="mailto:contact@verticalhorizons.ch" class="hover:text-white transition-colors">
@@ -1106,8 +1109,8 @@
               <span class="language-content fr-content">Conditions légales</span>
               <span class="language-content en-content hidden">Terms & Conditions</span>
             </a>
-            <a href="/confidentialite.html" class="ml-3 hover:text-white transition-colors">Confidentialité / Privacy</a>
-            <a href="/mentions-legales.html" class="ml-3 hover:text-white transition-colors">Mentions légales / Legal notice</a>
+            <a href="/confidentialite.html" class="ml-3 hover:text-white transition-colors"><span class="language-content fr-content">Confidentialité</span><span class="language-content en-content hidden">Privacy</span></a>
+            <a href="/mentions-legales.html" class="ml-3 hover:text-white transition-colors"><span class="language-content fr-content">Mentions légales</span><span class="language-content en-content hidden">Legal notice</span></a>
           </p>
         </div>
       </div>
@@ -1132,8 +1135,7 @@
         const mobileMenuButton = document.getElementById("mobileMenuButton");
         const mobileMenu = document.getElementById("mobileMenu");
         mobileMenuButton.addEventListener("click", function () {
-          const isHidden = const isHidden = mobileMenu.classList.toggle("hidden");
-          mobileMenuButton.setAttribute("aria-expanded", String(!isHidden));
+          const isHidden = mobileMenu.classList.toggle("hidden");
           mobileMenuButton.setAttribute("aria-expanded", String(!isHidden));
         });
         // Activity tabs

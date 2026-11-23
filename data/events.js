@@ -92,6 +92,7 @@ window.VERTICAL_HORIZONS_EVENTS = {
       shortDescription: "5 jours d'escalade, de formation et d'aventure en Andalousie.",
       description: "Le programme principal peut inclure escalade sportive, technique et tactique, manipulations de corde, grande voie, rappel, via ferrata et découverte du secteur. Des activités complémentaires pourront être proposées selon les conditions, les disponibilités et les souhaits du groupe. Une estimation des coûts sera communiquée avant le séjour.",
       price: "CHF 750 / participant",
+      priceLabelEn: "Guiding by Vertical Horizons",
       priceLabel: "Encadrement Vertical Horizons",
       notIncluded: "Vol, transport jusqu'à Málaga, location de voiture, hébergement, repas, location éventuelle de matériel et activités complémentaires.",
       estimatedAdditionalCosts: { flights: null, accommodation: null, transport: null, equipment: null, activities: null },
@@ -105,6 +106,7 @@ window.VERTICAL_HORIZONS_EVENTS = {
       date: "2027-01-04",
       endDate: "2027-01-09",
       dateLabel: "4–9 janvier 2027",
+      dateLabelEn: "4–9 January 2027",
       title: "Todra – Morocco Climbing & Adventure",
       subtitle: "6 jours",
       category: "voyage",
@@ -113,6 +115,7 @@ window.VERTICAL_HORIZONS_EVENTS = {
       shortDescription: "Séjour escalade et aventure dans les Gorges du Todra et leurs environs.",
       description: "Le programme principal peut inclure escalade, découverte des Gorges du Todra, progression et technique, avec des sorties adaptées au niveau du groupe. D'autres activités et excursions pourront être proposées selon les conditions, les possibilités locales et les envies du groupe.",
       price: "CHF 1'000 / participant",
+      priceLabelEn: "Guiding by Vertical Horizons",
       priceLabel: "Encadrement Vertical Horizons",
       notIncluded: "Vol, transport, hébergement, éventuelle location de matériel, dépenses personnelles et activités supplémentaires éventuelles.",
       includedNote: "Selon l'hébergement choisi, une grande partie des repas peut être comprise dans le prix du séjour.",
@@ -123,6 +126,7 @@ window.VERTICAL_HORIZONS_EVENTS = {
     {
       id: "costa-blanca-fevrier-2027",
       dateLabel: "Vacances de février 2027",
+      dateLabelEn: "February 2027 school holidays",
       title: "Costa Blanca – Winter Climbing",
       subtitle: "Projet",
       category: "voyage",
@@ -135,6 +139,7 @@ window.VERTICAL_HORIZONS_EVENTS = {
     {
       id: "leonidio-paques-2027",
       dateLabel: "Vacances de Pâques 2027",
+      dateLabelEn: "Easter 2027 school holidays",
       title: "Leonidio – Mediterranean Climbing",
       subtitle: "Projet",
       category: "voyage",
@@ -227,6 +232,7 @@ window.VERTICAL_HORIZONS_EVENTS = {
       description: "Séance en salle pour poser les bases théoriques de l'assurage dynamique et répéter les gestes dans un cadre contrôlé. Nous travaillerons notamment le timing, le positionnement, la gestion de la corde et l'accompagnement du mouvement. Prérequis: savoir déjà assurer. Inscription possible à cette séance seule ou aux deux séances. Une activité de mise en pratique en extérieur pourra être proposée ultérieurement, séparément.",
       descriptionEn: "An indoor session covering the theory of dynamic belaying and practising the movements in a controlled setting. We will work on timing, positioning, rope management and following the climber's movement. Prerequisite: prior belaying experience. You can register for this session alone or for both sessions. An outdoor application session may be offered separately at a later date.",
       price: "CHF 70 / séance · CHF 120 les 2",
+      priceEn: "CHF 70 / session · CHF 120 for both",
       status: "upcoming"
     },
     {
@@ -247,6 +253,7 @@ window.VERTICAL_HORIZONS_EVENTS = {
       description: "Séance avancée en salle pour mettre en pratique l'assurage dynamique dans différentes situations, en faisant varier les surfaces, les hauteurs et les scénarios de chute. Un bon niveau d'assurage est requis. Inscription possible à cette séance seule ou aux deux séances. Une activité de mise en pratique en extérieur pourra être proposée ultérieurement, séparément.",
       descriptionEn: "An advanced indoor session applying dynamic belaying in varied situations, with different surfaces, heights and fall scenarios. A good level of belaying is required. You can register for this session alone or for both sessions. An outdoor application session may be offered separately at a later date.",
       price: "CHF 70 / séance · CHF 120 les 2",
+      priceEn: "CHF 70 / session · CHF 120 for both",
       status: "upcoming"
     },
     {
@@ -549,8 +556,9 @@ window.VERTICAL_HORIZONS_EVENTS = {
       startTime: "17:00",
       endTime: "19:00",
       price: "CHF 450 / 9 séances",
+      priceEn: "CHF 450 / 9 sessions",
       location: "Lieu adapté aux conditions météorologiques et au groupe",
-      locationEn: "Location adapted to weather conditions and the group",
+      locationEn: "Location selected according to weather conditions and group needs",
       shortDescription: "Un accompagnement personnalisé pour structurer et suivre votre entraînement sur 9 séances.",
       shortDescriptionEn: "Personalised coaching to structure and follow your training over 9 sessions.",
       description: "Un bloc de 9 séances de suivi d'entraînement personnalisé, chaque vendredi de 17h à 19h à partir du 15 janvier 2027. Le suivi peut se dérouler en salle et/ou en extérieur, selon les conditions météorologiques et les besoins du groupe. Les séances ne sont pas programmées pendant les vacances scolaires vaudoises.",
@@ -574,6 +582,7 @@ window.VERTICAL_HORIZONS_EVENTS = {
       shortDescription: "Un cours général de Hatha Yoga, particulièrement pertinent pour les grimpeurs.",
       description: "Cours de Hatha Yoga accessible à tous. La pratique travaille la mobilité, la souplesse, la force, l'équilibre, la respiration, la concentration, la conscience corporelle, la récupération et le contrôle du mouvement.",
       price: "CHF 20 / séance",
+      priceEn: "CHF 20 / session",
       recurring: { frequency: "weekly", weekday: 4 },
       skipSchoolBreaks: true,
       status: "upcoming",
@@ -676,14 +685,30 @@ window.VERTICAL_HORIZONS_EVENTS = {
       shortDescription: "A general Hatha Yoga class, particularly beneficial for climbers.",
       description: "A Hatha Yoga class accessible to everyone. The practice develops mobility, flexibility, strength, balance, breathing, concentration, body awareness, recovery and movement control."
     },
-    "El Chorro – Climbing & Adventure": { title: "El Chorro - climbing & adventure", subtitle: "5 days", shortDescription: "Five days of climbing, training and adventure in Andalusia." },
-    "Todra – Morocco Climbing & Adventure": { title: "Todra - Morocco climbing & adventure", subtitle: "6 days", shortDescription: "A climbing and adventure trip in the Todra Gorges and surrounding area." },
+    "El Chorro – Climbing & Adventure": {
+      title: "El Chorro - climbing & adventure",
+      subtitle: "5 days",
+      shortDescription: "Five days of climbing, training and adventure in Andalusia.",
+      description: "A five-day trip dedicated to climbing and discovering the El Chorro area. The programme may include sport climbing, a day focused on rope skills and safety, a multi-pitch outing with abseiling, and a via ferrata. Depending on conditions, availability and the group's preferences, other activities may be offered, such as the Caminito del Rey or exploring the region. The programme will remain flexible to make the most of local conditions and the group's level.",
+      priceLabel: "Guiding by Vertical Horizons",
+      notIncluded: "Flights and transport to Málaga, car rental, accommodation, meals, optional equipment rental and additional activities.",
+      includedNote: "Depending on the accommodation chosen, meals may be prepared on site or enjoyed at nearby restaurants and shops. Climbing equipment may also be rented locally."
+    },
+    "Todra – Morocco Climbing & Adventure": {
+      title: "Todra - Morocco climbing & adventure",
+      subtitle: "6 days",
+      shortDescription: "A climbing and adventure trip in the Todra Gorges and surrounding area.",
+      description: "The main programme may include climbing, exploring the Todra Gorges, and coaching focused on progression and technique, with outings adapted to the group's level. Other activities and excursions may be offered depending on conditions, local availability and the group's interests.",
+      priceLabel: "Guiding by Vertical Horizons",
+      notIncluded: "Flights, transport, accommodation, possible equipment rental, personal expenses and any additional activities.",
+      includedNote: "Depending on the accommodation chosen, some meals may be included in the trip. This depends on the selected accommodation and is intended as a guide for budgeting."
+    },
     "Costa Blanca – Winter Climbing": { title: "Costa Blanca - winter climbing", subtitle: "Project", shortDescription: "A sunny climbing trip on the Costa Blanca." },
     "Leonidio – Mediterranean Climbing": { title: "Leonidio - Mediterranean climbing", subtitle: "Project", shortDescription: "A climbing and adventure trip to Leonidio, Greece." }
   };
   data.events.concat(data.recurringTemplates || []).forEach(function (event) {
     const copy = englishCopy[event.title];
     if (!copy) return;
-    Object.keys(copy).forEach(function (key) { event[key === "title" ? "titleEn" : key === "subtitle" ? "subtitleEn" : key === "location" ? "locationEn" : key === "shortDescription" ? "shortDescriptionEn" : key === "description" ? "descriptionEn" : key === "duration" ? "durationEn" : key === "safetyNote" ? "safetyNoteEn" : key] = copy[key]; });
+    Object.keys(copy).forEach(function (key) { event[key + "En"] = copy[key]; });
   });
 })(window.VERTICAL_HORIZONS_EVENTS);
