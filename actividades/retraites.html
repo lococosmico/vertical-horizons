@@ -6,31 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Retraites yoga et escalade dans les Alpes suisses, proposees sur demande selon le format, le niveau et le calendrier du groupe.">
         <link rel="canonical" href="https://verticalhorizons.ch/actividades/retraites.html" />
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Vertical Horizons">
+  <meta property="og:title" content="Vertical Horizons – Retraites Yoga &amp; Escalade | Yoga &amp; Climbing Retreats">
+  <meta property="og:description" content="Retraites yoga et escalade dans les Alpes suisses, proposees sur demande selon le format, le niveau et le calendrier du groupe.">
+  <meta property="og:url" content="https://verticalhorizons.ch/actividades/retraites.html">
+  <meta property="og:image" content="https://verticalhorizons.ch/img/logo.jpg">
+  <meta property="og:locale" content="fr_CH">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary">
     <title>
       Vertical Horizons – Retraites Yoga & Escalade | Yoga & Climbing Retreats
     </title>
-    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: { primary: "#2F4F4F", secondary: "#8B7355" },
-            borderRadius: {
-              none: "0px",
-              sm: "4px",
-              DEFAULT: "8px",
-              md: "12px",
-              lg: "16px",
-              xl: "20px",
-              "2xl": "24px",
-              "3xl": "32px",
-              full: "9999px",
-              button: "8px",
-            },
-          },
-        },
-      };
-    </script>
+    <link rel="stylesheet" href="../css/site.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -159,8 +148,8 @@
           <button
             class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700"
             id="mobileMenuButton"
-          >
-            <i class="ri-menu-line ri-lg"></i>
+           type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
+            <i aria-hidden="true" class="ri-menu-line ri-lg"></i>
           </button>
         </div>
       </div>
@@ -716,14 +705,14 @@
               <span class="language-content en-content hidden">Your climbing partner in Switzerland</span>
             </p>
             <div class="flex space-x-4">
-              <a href="https://www.instagram.com/verticalhorizons.ch/" target="_blank" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors" rel="noopener noreferrer">
-                <i class="ri-instagram-line ri-lg"></i>
+              <a href="https://www.instagram.com/verticalhorizons.ch/" target="_blank" aria-label="Instagram" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors" rel="noopener noreferrer">
+                <i class="ri-instagram-line ri-lg" aria-hidden="true"></i>
               </a>
-              <a href="https://www.facebook.com/Verticalhorizons.ch" target="_blank" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors" rel="noopener noreferrer">
-                <i class="ri-facebook-line ri-lg"></i>
+              <a href="https://www.facebook.com/Verticalhorizons.ch" target="_blank" aria-label="Facebook" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors" rel="noopener noreferrer">
+                <i class="ri-facebook-line ri-lg" aria-hidden="true"></i>
               </a>
-              <a href="https://wa.me/41764969463" target="_blank" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors" rel="noopener noreferrer">
-                <i class="ri-whatsapp-line ri-lg"></i>
+              <a href="https://wa.me/41764969463" target="_blank" aria-label="WhatsApp" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors" rel="noopener noreferrer">
+                <i class="ri-whatsapp-line ri-lg" aria-hidden="true"></i>
               </a>
             </div>
           </div>
@@ -786,7 +775,7 @@
         <!-- Línea legal discreta -->
         <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
           <p>
-            &copy; 2025 Vertical Horizons. 
+            &copy; 2026 Vertical Horizons.
             <a href="../conditions.html" class="hover:text-white transition-colors">
               <span class="language-content fr-content">Conditions légales</span>
               <span class="language-content en-content hidden">Terms & Conditions</span>
@@ -821,13 +810,15 @@
 
         // Abrir/cerrar menú al hacer clic en el botón ☰
         mobileMenuButton.addEventListener("click", function () {
-          mobileMenu.classList.toggle("hidden");
+          const isHidden = mobileMenu.classList.toggle("hidden");
+          mobileMenuButton.setAttribute("aria-expanded", String(!isHidden));
         });
 
         // Cerrar menú al hacer clic en cualquier enlace
         mobileMenuLinks.forEach(link => {
           link.addEventListener("click", function () {
-            mobileMenu.classList.add("hidden"); // Cierra el menú
+            mobileMenu.classList.add("hidden");
+          mobileMenuButton.setAttribute("aria-expanded", "false"); // Cierra el menú
           });
         });
         
@@ -839,6 +830,7 @@
         languageButtons.forEach((button) => {
           button.addEventListener("click", function () {
             const lang = this.getAttribute("data-lang");
+      document.documentElement.lang = lang;
             // Update button styles
             languageButtons.forEach((btn) => {
               btn.classList.remove("active", "bg-white", "text-primary", "shadow-sm");

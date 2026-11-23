@@ -563,6 +563,7 @@ window.VERTICAL_HORIZONS_EVENTS = {
     {
       id: "hatha-yoga-jeudi-ollon",
       startDate: "2026-09-03",
+      endDate: "2026-12-20",
       title: "Hatha Yoga - Ollon",
       subtitle: "Cours général accessible à tous",
       category: "yoga",

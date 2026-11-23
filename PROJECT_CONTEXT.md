@@ -41,7 +41,7 @@
 - Ciclo de domingos publicado entre septiembre y diciembre de 2026.
 - Recurrentes:
   - Seguimiento de entrenamiento personalizado los viernes, bloque de 9 sesiones desde el 15 de enero de 2027 hasta el 19 de marzo, de 17:00 a 19:00, CHF 450; sala y/o exterior según el tiempo y el grupo, sin sesiones durante las vacaciones escolares vaudoises.
-  - Hatha Yoga en Ollon los jueves desde el 3 de septiembre de 2026.
+  - Hatha Yoga en Ollon los jueves desde el 3 de septiembre hasta la semana del 20 de diciembre de 2026 (última sesión: 17 de diciembre).
 - Vacaciones bloqueadas: otoño 2026, Navidad 2026-2027, relache 2027 y Pascua 2027.
 - Viajes visibles:
   - El Chorro, 29 de marzo-2 de abril de 2027, primera semana de las vacaciones de Pascua vaudoises.
@@ -53,13 +53,13 @@
 
 ## Pendientes conocidos
 
-- Configurar un proveedor real para el formulario newsletter.
+- Crear y configurar un formulario Brevo para la newsletter; integrarlo en el sitio antes de recoger suscripciones.
 - Completar precios y costes adicionales de los viajes.
 - Comprobar que GitHub Pages haya desplegado el commit `f9ea624` y revisar el sitio publicado.
 - Comunicar por WhatsApp a los participantes las salas para las sesiones indoor de aseguramiento dinámico; esos nombres no se publican en el sitio.
 - Comunicar a los clientes el nuevo bloque de seguimiento de entrenamiento por la lista de difusión de WhatsApp (la comunicación no se envía desde el sitio).
 - Confirmar Costa Blanca y Leonidio.
-- No se deben recoger suscripciones newsletter hasta que el proveedor esté configurado.
+- No se deben recoger suscripciones newsletter hasta que el formulario Brevo esté integrado y probado.
 
 ## Convenciones
 
