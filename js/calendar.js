@@ -121,6 +121,7 @@
           expanded.push(Object.assign({}, event, {
             id: event.id + "-" + date,
             date: date,
+            seriesId: event.id,
             recurring: true
           }));
           generatedCount += 1;
@@ -212,6 +213,16 @@
     '</article>';
   }
 
+  function collapseRecurringSeries(events) {
+    const displayedSeries = new Set();
+    return events.filter(function (event) {
+      if (!event.recurring) return true;
+      if (displayedSeries.has(event.seriesId)) return false;
+      displayedSeries.add(event.seriesId);
+      return true;
+    });
+  }
+
   function setupFilters(events, container, list) {
     const categories = categoryOrder.filter(function (category) { return events.some(function (event) { return event.category === category; }); });
     container.innerHTML = categories.length ? '<button type="button" class="calendar-filter active px-4 py-2 rounded-full bg-primary text-white" data-category="all">' + (isEnglish() ? "All" : "Toutes") + '</button>' + categories.map(function (category) { return '<button type="button" class="calendar-filter px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200" data-category="' + category + '"><i class="' + categoryIcons[category] + ' mr-1" aria-hidden="true"></i>' + categoryLabel(category) + '</button>'; }).join("") : "";
@@ -219,7 +230,7 @@
   }
 
   function renderList(events, list, category) {
-    const filtered = events.filter(function (event) { return !category || category === "all" || event.category === category; });
+    const filtered = collapseRecurringSeries(events).filter(function (event) { return !category || category === "all" || event.category === category; });
     list.innerHTML = filtered.length ? filtered.map(function (event) { return eventCard(event, false); }).join("") : '<div class="bg-gray-50 rounded-2xl p-8 text-center text-gray-600">' + (isEnglish() ? "No activities are published for this filter yet." : "Aucune activité n'est publiée dans ce filtre pour le moment.") + '</div>';
     bindEventButtons(list);
   }
@@ -230,7 +241,7 @@
 
   function eventRanges(event) {
     const ranges = [];
-    if (event.date) ranges.push({ start: event.date, end: event.endDate || event.date });
+    if (event.date) ranges.push({ start: event.date, end: event.recurring ? event.date : (event.endDate || event.date) });
     (event.dateOptions || []).forEach(function (option) { ranges.push({ start: option.start, end: option.end || option.start }); });
     return ranges;
   }
@@ -335,13 +346,23 @@
     const nextMonthButton = document.querySelector("[data-calendar-next]");
     if (nextMonthButton) nextMonthButton.onclick = function () { currentMonth.setMonth(currentMonth.getMonth() + 1); renderMonth(upcoming, "all"); };
     const past = document.querySelector("[data-calendar-past]");
-    if (past) { const pastEvents = events.filter(function (event) { return (event.date && dateValue(event.date) < today) || event.status === "completed"; }); past.innerHTML = pastEvents.length ? pastEvents.map(function (event) { return eventCard(event.status === "cancelled" ? event : Object.assign({}, event, { status: "completed" }), true); }).join("") : '<p class="text-gray-600">' + (isEnglish() ? "No past activities are listed." : "Aucune activité passée n'est listée.") + '</p>'; }
+    if (past) {
+      const pastEvents = events.filter(function (event) { return (event.date && dateValue(event.date) < today) || event.status === "completed"; });
+      const latestPastBySeries = Object.create(null);
+      pastEvents.forEach(function (event, index) {
+        if (event.recurring) latestPastBySeries[event.seriesId] = index;
+      });
+      const pastEventsToDisplay = pastEvents.filter(function (event, index) {
+        return !event.recurring || latestPastBySeries[event.seriesId] === index;
+      });
+      past.innerHTML = pastEventsToDisplay.length ? pastEventsToDisplay.map(function (event) { return eventCard(event.status === "cancelled" ? event : Object.assign({}, event, { status: "completed" }), true); }).join("") : '<p class="text-gray-600">' + (isEnglish() ? "No past activities are listed." : "Aucune activité passée n'est listée.") + '</p>';
+    }
   }
 
   function renderHome() {
     const list = document.querySelector("[data-upcoming-events]");
     if (!list) return;
-    const events = getEvents().filter(function (event) { return dateValue(event.date) >= today && event.status === "upcoming"; }).slice(0, 4);
+    const events = collapseRecurringSeries(getEvents().filter(function (event) { return dateValue(event.date) >= today && event.status === "upcoming"; })).slice(0, 4);
     list.innerHTML = events.length ? events.map(function (event) { return eventCard(event, true); }).join("") : '<div class="bg-gray-50 rounded-2xl p-6 text-center text-gray-600">' + (isEnglish() ? "New activity dates will be published soon." : "Les prochaines dates seront publiées prochainement.") + '</div>';
     bindEventButtons(list);
   }
