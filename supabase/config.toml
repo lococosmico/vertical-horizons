@@ -1,0 +1,38 @@
+project_id = "vertical-horizons-my-progress"
+
+[api]
+enabled = true
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[auth]
+enabled = true
+site_url = "https://verticalhorizons.ch"
+additional_redirect_urls = [
+  "https://verticalhorizons.ch/my-progress/app.html",
+  "https://verticalhorizons.ch/my-progress/reset.html",
+  "http://localhost:8000/my-progress/app.html",
+  "http://localhost:8000/my-progress/reset.html"
+]
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = true
+secure_password_change = true
+
+[auth.password]
+min_length = 10
+
+[functions.delete-account]
+# The function validates the initial user JWT itself; a random one-time recovery
+# token is also needed to finish a deletion after Auth has removed that user.
+verify_jwt = false
+
+[functions.delete-activity]
+verify_jwt = true
+
+[functions.delete-photo]
+verify_jwt = true

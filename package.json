@@ -1,9 +1,16 @@
 {
   "private": true,
   "scripts": {
-    "build:css": "tailwindcss -i ./src/tailwind.css -o ./css/site.css --minify"
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./css/site.css --minify",
+    "build:app": "node scripts/build-app.mjs",
+    "build": "npm run build:css && npm run build:app",
+    "check:app": "node scripts/check-app.mjs"
   },
   "devDependencies": {
+    "esbuild": "^0.28.2",
     "tailwindcss": "3.4.16"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.119.2"
   }
 }
